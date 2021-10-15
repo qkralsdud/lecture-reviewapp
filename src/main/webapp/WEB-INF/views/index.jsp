@@ -2,4 +2,5 @@
     pageEncoding="UTF-8"%>
 <%@ include file="./layout/header.jsp" %>
 <h3>메인페이지</h3>
+
 <%@ include file="./layout/footer.jsp" %>
