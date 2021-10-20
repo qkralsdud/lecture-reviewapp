@@ -21,13 +21,7 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-<link id="favicon-link" rel="shortcut icon" href="../image/favicon.png">
 </head>
-<style>
-	nav {
-	
-	}
-</style>
 <body>
 
 	<!-- 네브바 시작 -->

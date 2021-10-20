@@ -4,6 +4,15 @@
 <%@ include file="../layout/header.jsp" %>
 
 <style>
+	ul {
+		margin: 1px;
+	}
+	nav {
+		display: grid;
+		grid-template-columns: auto auto;
+		justify-content: flex-end;
+	}
+
 	#content {
 		width: auto;
 		margin: 0 auto;
@@ -22,6 +31,15 @@
 	}
 	#step1{
 		width: 30%;
+		text-align: center;
+	}
+	#step3{
+		width: 30%;
+		text-align: center;
+		vertical-align: middle;
+	}
+	#step5{
+		vertical-align: middle;
 	}
 	header {
 		background-image:  url("/image/background.jpg");
@@ -39,13 +57,40 @@
 		top: 10px;
 		right: 10px;
 	}
+	.star-rating {
+		display: flex;
+		flex-direction: row-reverse;
+		font-size: 2.25rem;
+		line-height: 2.5rem;
+		padding: 0 0.2em;
+		text-align: center;
+		width: 5em;
+	}
 
+	.star-rating input {
+		display: none;
+	}
+	
+	.star-rating label {
+		-webkit-text-fill-color: transparent;
+		/* Will override color (regardless of order) */
+		-webkit-text-stroke-width: 2.3px;
+		-webkit-text-stroke-color: #2b2a29;
+		cursor: pointer;
+	}
+	
+	.star-rating :checked ~ label {
+		-webkit-text-fill-color: gold;
+	}
+	
+	.star-rating label:hover, .star-rating label:hover ~ label {
+		-webkit-text-fill-color: #fff58c;
+	}
 
 </style>
 
 <!-- 윗부분 시작-->
 <div class="container">
-	<div id="content">
 		<form action="#" method="post">
 			<!-- 강의소개 -->
 			<header>
@@ -82,7 +127,9 @@
 			  </br>
 			  <table class="table table-dark">
 			  	<tr>
+			  		<div id="last">
 			  		<td rowspan=2 id="step" ><h5>STEP <span>01</span></h5></td>
+			  		</div>
 			  		<td>프로그래밍 언어활용 <span>｜</span> 응용SW 기초기술 활용</td>
 			  	</tr>
 			  	<tr>
@@ -137,22 +184,62 @@
 			  </br>
 			  <!--  아래부분 시작-->
 			  <!-- 라인  -->
-			  	<table class="table">
-				  	<tr>
-				  		<td id="step1"><h5>평점 및 리뷰</h5></td>
-				  		<td id="step1"><h5>평점 숫자</h5></td>
-				  	</tr>
-				  	<tr>
-				  		<td id="step1">평균 평점 4.8</td>
-				  		<td id="step1">평균 평점 4.8</td>
-				  	</tr>			  				  	
-			  	</table>
-			  	<table class="review">
-			  			
-			  	</table>
+			<h3 id="step5"><img src="/image/logo.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width: 60px;"> 그린 컴퓨터 아카데미 평점 및 리뷰</h3>
+			  </br>
+			  <table class="table">
+			  	<tr>
+			  		<td id="step4"><h4>평균평점 : 4</h4></td>
+			  		<td>
+					<div class="star-rating space-x-4 mx-auto">
+						<input type="radio" id="5-stars" name="rating" value="5"
+							v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
+						<input type="radio" id="4-stars" name="rating" value="4"
+							v-model="ratings" /> <label for="4-stars" class="star">★</label>
+						<input type="radio" id="3-stars" name="rating" value="3"
+							v-model="ratings" /> <label for="3-stars" class="star">★</label>
+						<input type="radio" id="2-stars" name="rating" value="2"
+							v-model="ratings" /> <label for="2-stars" class="star">★</label>
+						<input type="radio" id="1-star" name="rating" value="1"
+							v-model="ratings" /> <label for="1-star" class="star">★</label>
+					</div>
+					</td>	
+				</tr>
+			  </table>
+				<div class="mt-3">
+					<div class="media border p-3">
+						<img src="/image/logo.png" alt="John Doe"
+							class="mr-3 mt-3 rounded-circle" style="width: 60px;">
+						<div class="media-body">
+							<h4>
+								제목 <small><i>작성자</i></small>
+							</h4>
+							<p>응용 SW 개발에 필요한 환경을 구축하고 프로그래밍 언어의 기초문법을 적용하고 , 자바 언어의 특징을 이해하고 기본 응용SW를 구현하며 프로그래밍의 기본기를 익히는 단계</p>
+						</div>
+					</div>
+				</div>
+				</br>
+				<div class="mt-3">
+					<div class="media border p-3">
+						<img src="/image/logo.png" alt="John Doe"
+							class="mr-3 mt-3 rounded-circle" style="width: 60px;">
+						<div class="media-body">
+							<h4>
+								제목 <small><i>작성자</i></small>
+							</h4>
+							<p>응용 SW 개발에 필요한 환경을 구축하고 프로그래밍 언어의 기초문법을 적용하고 , 자바 언어의 특징을 이해하고 기본 응용SW를 구현하며 프로그래밍의 기본기를 익히는 단계</p>
+						</div>
+					</div>
+				</div>
+				</br>
+			  	<nav>
+			  	<ul>
+			  	<button type="submit" class="btn btn-primary" id="button">강의 삭제</button>
+			  	<button type="submit" class="btn btn-primary" id="button">리뷰 등록</button>
+			  	</ul>
+			  	</nav>
 			  <!--  아래부분 종료-->
 		</form>
 	</div>
-</div>
+
 
 <%@ include file="../layout/footer.jsp" %>        
