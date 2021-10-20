@@ -21,9 +21,21 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<style>
+
+
+header{
+  position: fixed;
+  top: 0;
+  /* width: 100% */
+  left: 0;
+  right: 0;
+  z-index: 8;
+}
+</style>
 </head>
 <body>
-
+<header>
 	<!-- 네브바 시작 -->
 	<nav class="navbar navbar-expand-sm bg-primary navbar-dark " >
 		<a class="navbar-brand"  href="#">그린컴퓨터아카데미</a>
@@ -38,5 +50,8 @@
 			</ul>
 		</div>
 	</nav>
-	<br>
+	</header>
+	</body>
+	</html>
+	
 	<!-- 네브바 끝 -->
