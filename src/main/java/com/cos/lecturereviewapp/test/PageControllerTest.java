@@ -22,6 +22,10 @@ public class PageControllerTest {
 	public String userUpdateForm() {
 		return "user/updateForm";
 	}
+	@GetMapping("/test/user/deleteForm")
+	public String userDeleteForm() {
+		return "user/deleteForm";
+	}
 
 	//강의 부분---------------------------
 	@GetMapping("/test/board/detail")
