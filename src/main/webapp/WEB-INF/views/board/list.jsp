@@ -5,8 +5,8 @@
     <style>
         .m_box {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-gap: 10px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-gap: 20px;
         }
 
         .m_tm_20 {
@@ -24,7 +24,10 @@
     margin: 0 auto;
 }
     </style>
- </br>  
+<br>
+<br>
+<br>
+<br>
 <h2 style="text-align: center">그린 컴퓨터 아카데미 IT 강의 리스트</h2>
 <div class="container mt-3" >
 <div id="content">
@@ -36,15 +39,16 @@
     <div class="container m_box "  id="list">
         <!-- 영화카드시작 -->
         <div class="card " >
-            <img class="card-img-top" src="" alt="Card image">
+            <img class="card-img-top" src="/image/background.jpg" alt="Card image">
             <div class="card-body text-center" >
-                <h4 class="card-title">강의명</h4>
-                <p class="card-text box" >강의소개</p>
+                <h4 class="card-title">데이터 융합 자바(JAVA),코틀린(Kotlin) 웹&앱 개발자 양성과정</h4>
+                <p class="card-text box" >응용 SW 개발에 필요한 환경을 구축하고 프로그래밍 언어의 기초문법을 적용하고 , 자바 언어의 특징을 이해하고 기본 응용SW를 구현하며 프로그래밍의 기본기를 익히는 단계</p>
                 <a href="#" class="btn btn-primary">상세보기</a>
             </div>
             <br>
         </div> 
         <!-- 영화카드 끝 -->
+
     </div>
     <script>
 $(document).ready(function(){

@@ -41,7 +41,7 @@
 	#step5{
 		vertical-align: middle;
 	}
-	header {
+	.header {
 		background-image:  url("/image/background.jpg");
 		height: 350px;
 	}
@@ -88,12 +88,14 @@
 	}
 
 </style>
-
+<br>
+<br>
+<br>
 <!-- 윗부분 시작-->
 <div class="container">
 		<form action="#" method="post">
 			<!-- 강의소개 -->
-			<header>
+			<div class="header">
 				<section>
 					<div class="search_box">
 						<div class="search_title"><h3>데이터 융합 자바(JAVA),코틀린(Kotlin) 웹&앱 개발자 양성과정</h3></div>
@@ -118,7 +120,7 @@
 						</table>	
 					</div>
 				</section>
-			</header>
+			</div>
 			</br>
 			</br>
 			<!-- 윗부분 종료 -->

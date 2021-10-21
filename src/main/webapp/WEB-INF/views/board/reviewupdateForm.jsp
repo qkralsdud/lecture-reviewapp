@@ -36,7 +36,9 @@
 
 <div class="container">
 	<form action="" method="">
-
+<br>
+<br>
+<br>
 		<!-- 별점주기 -->
 		<input type="hidden" name="rate" id="rate" value="0" />
 		<h3 class="title_star ">리뷰 수정</h3>
