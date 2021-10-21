@@ -30,7 +30,6 @@
 	}
 	#step1{
 		width: 30%;
-		text-align: center;
 	}
 	#step3{
 		width: 30%;
@@ -99,20 +98,16 @@
 						<div class="search_sub_title"><p>응용 SW 개발에 필요한 환경을 구축하고 프로그래밍 언어의 기초문법을 적용하고 , 자바 언어의 특징을 이해하고 기본 응용SW를 구현하며 프로그래밍의 기본기를 익히는 단계</p></div>
 						<table>
 							<tr>
-								<td id="step1" >교육분야</td>
-								<td>교육분야</td>
-							</tr>
-							<tr>
 								<td id="step1" >취업분야</td>
-								<td>취업분야</td>
+								<td>IT 기술이 활용되는 모든 곳.자바프로그래머, 웹 개발자, 응용SW개발자 등</td>
 							</tr>
 							<tr>
 								<td id="step1" >사용프로그램</td>
-								<td>사용프로그램</td>
+								<td>자바(JAVA), 스프링(Spring)</td>
 							</tr>
 							<tr>
-								<td id="step1" >시간</td>
-								<td>시간</td>
+								<td id="step1" >강사명</td>
+								<td>최주호</td>
 							</tr>
 						</table>	
 					</div>
