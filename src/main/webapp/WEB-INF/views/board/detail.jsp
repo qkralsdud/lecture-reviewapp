@@ -12,7 +12,6 @@
 		grid-template-columns: auto auto;
 		justify-content: flex-end;
 	}
-
 	#content {
 		width: auto;
 		margin: 0 auto;
@@ -66,7 +65,6 @@
 		text-align: center;
 		width: 5em;
 	}
-
 	.star-rating input {
 		display: none;
 	}
@@ -86,7 +84,6 @@
 	.star-rating label:hover, .star-rating label:hover ~ label {
 		-webkit-text-fill-color: #fff58c;
 	}
-
 </style>
 <br>
 <br>
@@ -216,7 +213,7 @@
 								제목 <small><i>작성자</i></small>
 							</h4>
 							<p>응용 SW 개발에 필요한 환경을 구축하고 프로그래밍 언어의 기초문법을 적용하고 , 자바 언어의 특징을 이해하고 기본 응용SW를 구현하며 프로그래밍의 기본기를 익히는 단계</p>
-								<a href=" /test/board/reviewupdateForm" class="btn btn-primary">리뷰 수정</a>
+								<nav><a href=" /test/board/reviewupdateForm" class="btn btn-primary">리뷰 수정</a></nav>
 						</div>
 					</div>
 				</div>

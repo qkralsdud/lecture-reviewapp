@@ -2,6 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <style>
+nav {
+	display: grid;
+	grid-template-columns: auto auto;
+	justify-content: flex-end;
+}
+
 .star-rating {
 	display: flex;
 	flex-direction: row-reverse;
@@ -66,7 +72,7 @@
 			<textarea id="summernote" class="form-control" rows="5"
 				name="content"></textarea>
 		</div>
-		<button type="submit" class="btn btn-primary">수정완료</button>
+		<nav><button type="submit" class="btn btn-primary">수정완료</button></nav>
 	</form>
 </div>
 
