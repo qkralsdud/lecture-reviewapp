@@ -35,7 +35,10 @@
 </style>
 
 <div class="container">
-	<form action="" method="">
+	<form action="/test/board/detail" method="">
+<br>
+<br>
+<br>
 
 		<!-- 별점주기 -->
 		<input type="hidden" name="rate" id="rate" value="0" />

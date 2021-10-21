@@ -24,12 +24,15 @@
 	}
 
 </style>
-
+<br>
+<br>
+<br>
+<br>
 <div class="container">
 	<div id="content">
-		<form action="#" method="post">
+		<form action="/test/board/list" method="">
 			<div class="mTitle">
-				<h4>강의등록</h4>
+				<h4>그린컴퓨터 아카데미 강의등록</h4>
 					<table class="table">
 						<tr>
 							<th>
@@ -128,7 +131,7 @@
 						</tr>
 					</table>
 					<hr>
-					<button type="submit" class="btn btn-primary">등록</button>
+					<button type="submit" class="btn btn-primary">등록하기</button>
 			</div>
 		</form>
 	</div>

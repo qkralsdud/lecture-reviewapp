@@ -35,8 +35,10 @@
 </style>
 
 <div class="container">
-	<form action="" method="">
-
+	<form action="/test/board/detail" method="">
+<br>
+<br>
+<br>
 		<!-- 별점주기 -->
 		<input type="hidden" name="rate" id="rate" value="0" />
 		<h3 class="title_star ">리뷰 수정</h3>
@@ -65,7 +67,6 @@
 				name="content"></textarea>
 		</div>
 		<button type="submit" class="btn btn-primary">수정완료</button>
-		<button type="submit" class="btn btn-primary">삭제하기</button>
 	</form>
 </div>
 
