@@ -2,6 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <style>
+nav {
+	display: grid;
+	grid-template-columns: auto auto;
+	justify-content: flex-end;
+}
+
 .star-rating {
 	display: flex;
 	flex-direction: row-reverse;
@@ -36,9 +42,7 @@
 
 <div class="container">
 	<form action="/test/board/detail" method="">
-<br>
-<br>
-<br>
+		<br> <br> <br>
 
 		<!-- 별점주기 -->
 		<input type="hidden" name="rate" id="rate" value="0" />
@@ -67,7 +71,7 @@
 			<textarea id="summernote" class="form-control" rows="5"
 				name="content"></textarea>
 		</div>
-		<button type="submit" class="btn btn-primary">등록 완료</button>
+		<nav><button type="submit" class="btn btn-primary">등록 완료</button></nav>
 	</form>
 </div>
 
