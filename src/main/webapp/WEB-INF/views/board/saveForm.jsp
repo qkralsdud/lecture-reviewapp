@@ -30,7 +30,7 @@
 <br>
 <div class="container">
 	<div id="content">
-		<form action="#" method="post">
+		<form action="/test/board/list" method="">
 			<div class="mTitle">
 				<h4>그린컴퓨터 아카데미 강의등록</h4>
 					<table class="table">

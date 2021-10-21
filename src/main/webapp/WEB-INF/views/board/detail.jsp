@@ -216,6 +216,7 @@
 								제목 <small><i>작성자</i></small>
 							</h4>
 							<p>응용 SW 개발에 필요한 환경을 구축하고 프로그래밍 언어의 기초문법을 적용하고 , 자바 언어의 특징을 이해하고 기본 응용SW를 구현하며 프로그래밍의 기본기를 익히는 단계</p>
+								<a href=" /test/board/reviewupdateForm" class="btn btn-primary">리뷰 수정</a>
 						</div>
 					</div>
 				</div>
@@ -236,7 +237,7 @@
 			  	<nav>
 			  	<ul>
 			  	<button type="submit" class="btn btn-primary" id="button">강의 삭제</button>
-			  	<button type="submit" class="btn btn-primary" id="button">리뷰 등록</button>
+			  	<a href=" /test/board/reviewsaveForm" class="btn btn-primary">리뷰 등록</a>
 			  	</ul>
 			  	</nav>
 			  <!--  아래부분 종료-->

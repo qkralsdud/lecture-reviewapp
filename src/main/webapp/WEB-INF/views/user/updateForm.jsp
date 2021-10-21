@@ -117,17 +117,17 @@ nav {
 </style>
 
 <div class="form-container">
-	<form action="/test/user/updateForm" method="post">
+	<form action="/test/user/loginForm" method="post">
 		<h3>회원 정보 수정</h3>
 		<p>양식에 맞추어 수정할 내용을 입력해주세요.</p>
 		<div class="form-group">
-			<input type="text" class="form-control" required placeholder="아이디">
+			<input type="text" class="form-control" required placeholder="아이디" readonly="readonly">
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" required placeholder="비밀번호">
+			<input type="text" class="form-control" required placeholder="비밀번호" readonly="readonly">
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" required placeholder="이름">
+			<input type="text" class="form-control" required placeholder="이름" readonly="readonly">
 		</div>
 		<div class="form-group">
 			<input type="text" class="form-control" required placeholder="이메일">
@@ -138,7 +138,7 @@ nav {
 		<nav>
 			<button id="btn1" type="submit">수정하기</button>
 			<h>더이상 이용하지 않는다면 <a
-				href="http://localhost:8080/test/user/deleteForm">회원탈퇴</a> 바로가기</h>
+				href="/test/user/deleteForm">회원탈퇴</a> 바로가기</h>
 		</nav>
 	</form>
 </div>

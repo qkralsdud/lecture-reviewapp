@@ -35,7 +35,7 @@
 </style>
 
 <div class="container">
-	<form action="" method="">
+	<form action="/test/board/detail" method="">
 <br>
 <br>
 <br>

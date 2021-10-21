@@ -47,7 +47,7 @@ nav {
 <body class="text-center">
 	<div class="container">
 		<main class="form-signin">
-			<form action="/test/user/deleteForm" method="post">
+			<form action="/test/board/list" method="">
 
 				<img class="mb-4" src="/assets/brand/green.svg" alt="" width="150"
 					height="60">

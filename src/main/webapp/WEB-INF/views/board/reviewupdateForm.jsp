@@ -35,7 +35,7 @@
 </style>
 
 <div class="container">
-	<form action="" method="">
+	<form action="/test/board/detail" method="">
 <br>
 <br>
 <br>
@@ -67,7 +67,6 @@
 				name="content"></textarea>
 		</div>
 		<button type="submit" class="btn btn-primary">수정완료</button>
-		<button type="submit" class="btn btn-primary">삭제하기</button>
 	</form>
 </div>
 

@@ -43,7 +43,7 @@
             <div class="card-body text-center" >
                 <h4 class="card-title">데이터 융합 자바(JAVA),코틀린(Kotlin) 웹&앱 개발자 양성과정</h4>
                 <p class="card-text box" >응용 SW 개발에 필요한 환경을 구축하고 프로그래밍 언어의 기초문법을 적용하고 , 자바 언어의 특징을 이해하고 기본 응용SW를 구현하며 프로그래밍의 기본기를 익히는 단계</p>
-                <a href="#" class="btn btn-primary">상세보기</a>
+                <a href=" /test/board/detail" class="btn btn-primary">상세보기</a>
             </div>
             <br>
         </div> 

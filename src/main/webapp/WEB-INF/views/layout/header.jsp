@@ -43,15 +43,15 @@ header {
 	<header>
 		<!-- 네브바 시작 -->
 		<nav class="navbar navbar-expand-sm bg-primary navbar-dark ">
-			<a class="navbar-brand" href="#">그린컴퓨터아카데미</a>
+			<a class="navbar-brand" href="/test/board/list">그린컴퓨터아카데미</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#collapsibleNavbar">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">회원가입</a></li>
+					<li class="nav-item"><a class="nav-link" href="/test/user/loginForm">로그인</a></li>
+					<li class="nav-item"><a class="nav-link" href="/test/user/joinForm">회원가입</a></li>				
 				</ul>
 			</div>
 		</nav>
