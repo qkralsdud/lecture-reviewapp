@@ -14,10 +14,7 @@ public class PageControllerTest {
 	public String joForm() {
 		return "user/joinForm";
 	}
-	@GetMapping("/test/user/detail")
-	public String userDetail() {
-		return "user/detail";
-	}
+
 	@GetMapping("/test/user/updateForm")
 	public String userUpdateForm() {
 		return "user/updateForm";
@@ -39,10 +36,6 @@ public class PageControllerTest {
 	@GetMapping("/test/board/saveForm")
 	public String saveForm() {
 		return "board/saveForm";
-	}
-	@GetMapping("/test/board/updateForm")
-	public String updateForm() {
-		return "board/updateForm";
 	}
 	
 	//리뷰------------------------------------

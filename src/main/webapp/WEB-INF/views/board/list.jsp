@@ -38,7 +38,7 @@
 </div>
     <div class="container m_box "  id="list">
         <!-- 영화카드시작 -->
-        <div class="card " >
+        <div class="card "  >
             <img class="card-img-top" src="/image/background.jpg" alt="Card image">
             <div class="card-body text-center" >
                 <h4 class="card-title">데이터 융합 자바(JAVA),코틀린(Kotlin) 웹&앱 개발자 양성과정</h4>
