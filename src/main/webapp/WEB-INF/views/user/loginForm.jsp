@@ -21,9 +21,24 @@ body {
 	}
 }
 
-.container {
-	width: "900"
+.form-container {
+	max-width: 767px;
+	margin: auto;
+	padding: 70px 100px 80px;
+	border: 10px solid #95c6db;
+	background: #f5f5f5;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
+.form-control {
+	width: 100%;
+	height: 43px;
+	display: block;
+	font-size: 15px;
+	border: none;
+	border-bottom: 2px solid #04a5db;
+	background: none;
+}
+
 </style>
 
 
@@ -31,6 +46,7 @@ body {
 <link href="/assets/dist/css/signin.css" rel="stylesheet">
 
 <body class="text-center">
+<div class="form-container">
 	<div class="container">
 		<main class="form-signin">
 			<form action="/test/board/list" method="">
@@ -55,6 +71,7 @@ body {
 
 		</main>
 	</div>
+</div>	
 </body>
 
 <%@ include file="../layout/footer.jsp"%>

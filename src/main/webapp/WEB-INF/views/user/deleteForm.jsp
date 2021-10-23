@@ -3,9 +3,6 @@
 <%@ include file="../layout/header.jsp"%>
 
 <style>
-body {
-	padding-top: 200px;
-}
 
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -37,6 +34,30 @@ nav {
 #btn2 {
 	margin-left: 4px
 }
+
+.form-container {
+	max-width: 767px;
+	margin: auto;
+	padding: 70px 100px 80px;
+	border: 10px solid #95c6db;
+	background: #f5f5f5;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+.form-control {
+	width: 100%;
+	height: 43px;
+	display: block;
+	font-size: 15px;
+	border: none;
+	border-bottom: 2px solid #04a5db;
+	background: none;
+}
+
+/* #floatingInput{
+background-color:#f5f5f5;    
+or 
+background:none;
+}  */
 </style>
 
 
@@ -45,6 +66,7 @@ nav {
 </head>
 
 <body class="text-center">
+<div class="form-container">
 	<div class="container">
 		<main class="form-signin">
 			<form action="/test/board/list" method="">
@@ -54,7 +76,7 @@ nav {
 				<h1 class="h5 mb-3 fw-normal">비밀번호를 입력해주세요</h1>
 				<div class="form-floating">
 					<input type="text" class="form-control" id="floatingInput"
-						value="유저네임" readonly="readonly"> <br>
+						value="UserName" readonly="readonly"> <br>
 					<input type="password" class="form-control" id="floatingPassword"
 						placeholder="Password">
 
@@ -72,6 +94,7 @@ nav {
 			</form>
 
 		</main>
-	</div>
+	</div>	
+</div>
 
 	<%@ include file="../layout/footer.jsp"%>
