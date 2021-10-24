@@ -86,11 +86,12 @@ button[type="submit"] {
 	color: #ffffff;
 	border: 2px solid #ffffff;
 	border-radius: 4px;
-	background-color: #39459b;
+	background-color: #007bff; /*#39459b */
 	cursor: pointer;
 	text-transform: uppercase;
 	transition: background-color 0.2s linear;
 }
+
 
 button[type="submit"]:hover {
 	background-color: #299cd1;
