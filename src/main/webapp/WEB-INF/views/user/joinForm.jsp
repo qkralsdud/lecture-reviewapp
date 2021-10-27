@@ -113,19 +113,19 @@ nav {
 		<h3>회원 가입</h3>
 		<p>양식에 맞추어 회원 정보를 입력해주세요.</p>
 		<div class="form-group">
-			<input type="text" class="form-control" required placeholder="아이디">
+			<input type="text"  name="username" class="form-control" required placeholder="아이디">
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" required placeholder="비밀번호">
+			<input type="text"  name="password" class="form-control" required placeholder="비밀번호">
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" required placeholder="이름">
+			<input type="text"  name="name" class="form-control" required placeholder="이름">
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" required placeholder="이메일">
+			<input type="text"  name="email" class="form-control" required placeholder="이메일">
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" required placeholder="전화번호">
+			<input type="text"  name="phone" class="form-control" required placeholder="전화번호">
 		</div>
 		<nav>
 			<button id="btn1" type="submit">신청하기</button>

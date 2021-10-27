@@ -94,7 +94,7 @@
 								<h5>커리큘럼 Step1</h5>
 							</th>
 							<td>
-								<textarea id="curry"  name="curriculum" class="form-control" placeholder="커리큘럼을 입력해주세요"></textarea>
+								<textarea id="curry"  name="curriculum1" class="form-control" placeholder="커리큘럼을 입력해주세요"></textarea>
 							</td>
 						</tr>
 						<tr>
@@ -102,7 +102,7 @@
 								<h5>커리큘럼 Step2</h5>
 							</th>
 							<td>
-								<textarea id="curry" name="curriculum" class="form-control" placeholder="커리큘럼을 입력해주세요"></textarea>
+								<textarea id="curry" name="curriculum2" class="form-control" placeholder="커리큘럼을 입력해주세요"></textarea>
 							</td>
 						</tr>
 						<tr>
@@ -110,7 +110,7 @@
 								<h5>커리큘럼 Step3</h5>
 							</th>
 							<td>
-								<textarea id="curry"  name="curriculum" class="form-control" placeholder="커리큘럼을 입력해주세요"></textarea>
+								<textarea id="curry"  name="curriculum3" class="form-control" placeholder="커리큘럼을 입력해주세요"></textarea>
 							</td>
 						</tr>
 						<tr>
@@ -118,7 +118,7 @@
 								<h5>커리큘럼 Step4</h5>
 							</th>
 							<td>
-								<textarea id="curry"  name="curriculum" class="form-control" placeholder="커리큘럼을 입력해주세요"></textarea>
+								<textarea id="curry"  name="curriculum4" class="form-control" placeholder="커리큘럼을 입력해주세요"></textarea>
 							</td>
 						</tr>
 						<tr>
@@ -126,7 +126,7 @@
 								<h5>커리큘럼 Step5</h5>
 							</th>
 							<td>
-								<textarea id="curry"  name="curriculum" class="form-control" placeholder="커리큘럼을 입력해주세요"></textarea>
+								<textarea id="curry"  name="curriculum5" class="form-control" placeholder="커리큘럼을 입력해주세요"></textarea>
 							</td>
 						</tr>
 					</table>
