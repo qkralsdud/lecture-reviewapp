@@ -9,6 +9,7 @@
 	margin: 0 auto;
 	max-width: 600px;
 }
+
 table {
 	width: 100%;
 	table-layout: fixed;
@@ -16,9 +17,11 @@ table {
 	border-spacing: 0;
 	border-collapse: collapse;
 }
+
 #curry {
 	height: 100px;
 }
+
 th {
 	width: 110px;
 }
@@ -137,5 +140,6 @@ th {
 						.html(fileName);
 			});
 </script>
+
 
 <%@ include file="../layout/footer.jsp"%>
