@@ -4,9 +4,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.cos.lecturereviewapp.service.BoardService;
 import com.cos.lecturereviewapp.service.ReviewService;
+import com.cos.lecturereviewapp.web.dto.CMRespDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -31,13 +34,13 @@ public class BoardController {
 	// 주완 - 강의 등록 페이지 이동 @GetMapping("/board/saveForm")
 	
 	//민영 - 리뷰 수정 @PutMapping("/board/{id}/review")
-	
+
 	//민영 - 리뷰 수정페이지 이동 @GetMapping("/board/reviewupdateForm")
-	
+
 	//민영 - 리뷰 등록 @PostMapping("/board/{boardId}/review")
-	
+
 	//민영 - 리뷰 쓰기페이지 이동 @GetMapping
-	@GetMapping("/board/reviewsaveForm")
+	@GetMapping("/board/{boardId}/reviewsaveForm")
 	public String reviewsaveForm() {
 		return "board/reviewsaveForm";
 	}

@@ -41,7 +41,7 @@ nav {
 </style>
 
 <div class="container">
-	<form action="/test/board/detail" method="">
+	<form action="/board/${boardEntity.id }/comment" method="post">
 		<br> <br> <br>
 
 		<!-- 별점주기 -->

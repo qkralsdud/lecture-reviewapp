@@ -41,7 +41,7 @@ nav {
 </style>
 
 <div class="container">
-	<form action="/test/board/detail" method="">
+	<form onsubmit="update(event, ${boardEntity.id})" >
 <br>
 <br>
 <br>
