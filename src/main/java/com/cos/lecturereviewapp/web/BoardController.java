@@ -22,7 +22,10 @@ public class BoardController {
 	// 주완 - 강의 상세보기 @GetMapping("/board/{id}") return "board/detail"
 	
 	// 주완 - 강의 리스트(메인) 페이지 이동 @GetMapping("/board/list")
-	
+	@GetMapping("/")
+	public String home() {
+		return "board/list";
+	}
 	// 주완 - 강의 등록 @PostMapping("/board") 
 	
 	// 주완 - 강의 등록 페이지 이동 @GetMapping("/board/saveForm")
