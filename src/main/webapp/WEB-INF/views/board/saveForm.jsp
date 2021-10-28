@@ -4,6 +4,13 @@
 <%@ include file="../layout/header.jsp"%>
 
 <style>
+/* nav  */
+nav {
+	display: grid;
+	grid-template-columns: auto auto;
+	justify-content: flex-end;
+}
+
 #content {
 	width: auto;
 	margin: 0 auto;
@@ -32,7 +39,7 @@ th {
 <br>
 <div class="container">
 	<div id="content">
-		<form action="/test/board/list" method="">
+		<form action="/board" method="get">
 			<div class="mTitle">
 				<h4>그린컴퓨터 아카데미 강의등록</h4>
 				<table class="table">
