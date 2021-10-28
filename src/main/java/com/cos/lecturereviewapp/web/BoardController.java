@@ -4,16 +4,16 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.lecturereviewapp.domain.Board.Board;
 import com.cos.lecturereviewapp.domain.Board.BoardRepository;
 import com.cos.lecturereviewapp.domain.user.User;
 import com.cos.lecturereviewapp.service.BoardService;
 import com.cos.lecturereviewapp.service.ReviewService;
-import com.cos.lecturereviewapp.util.Script;
-import com.cos.lecturereviewapp.web.dto.BoardSaveDto;
+//import com.cos.lecturereviewapp.util.Script;
+//import com.cos.lecturereviewapp.web.dto.BoardSaveDto;
 
 import lombok.RequiredArgsConstructor;
 
