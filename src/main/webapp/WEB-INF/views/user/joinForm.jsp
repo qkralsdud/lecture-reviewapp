@@ -109,7 +109,7 @@ nav {
 </style>
 
 <div class="form-container">
-	<form action="/test/user/loginForm" method="post">
+	<form action="/join" method="post">
 		<h3>회원 가입</h3>
 		<p>양식에 맞추어 회원 정보를 입력해주세요.</p>
 		<div class="form-group">
