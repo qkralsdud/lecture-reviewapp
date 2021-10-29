@@ -4,14 +4,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 
-import com.cos.lecturereviewapp.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
 public class UserController {
-	private final UserService userService;
 	private final HttpSession session;
 	
 	// 영재 - 회원 탈퇴 @DeleteMapping("/user/{id}")

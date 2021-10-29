@@ -1,4 +1,4 @@
-package com.cos.lecturereviewapp.service;
+package com.cos.lecturereviewapp.service.review;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,16 +15,16 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class ReviewService {
-	private final BoardRepository boardRepository;
+public class ReviewServiceImpl implements ReviewService{
+
 	private final ReviewRepository reviewRepository;
+	private final BoardRepository boardRepository;
 	
 	@Transactional(rollbackFor = MyNotFoundException.class)
+	@Override
 	public void reviewReg(int boardId, ReviewSaveReqDto dto, User principal) {
-		
 		Board boardEntity = boardRepository.findById(boardId)
 				.orElseThrow(() -> new MyNotFoundException("해당 게시글을 찾을 수 없습니다."));
-		
 		Review review = new Review();
 		review.setTitle(dto.getTitle());
 		review.setContent(dto.getContent());
@@ -34,5 +34,6 @@ public class ReviewService {
 		
 		reviewRepository.save(review);
 	}
+	
 
 }

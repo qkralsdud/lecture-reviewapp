@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.cos.lecturereviewapp.domain.Board.Board;
 import com.cos.lecturereviewapp.domain.Board.BoardRepository;
 import com.cos.lecturereviewapp.domain.user.User;
-import com.cos.lecturereviewapp.service.BoardService;
-import com.cos.lecturereviewapp.service.ReviewService;
 import com.cos.lecturereviewapp.util.Script;
 import com.cos.lecturereviewapp.web.dto.BoardSaveDto;
 import com.cos.lecturereviewapp.web.dto.CMRespDto;
@@ -23,8 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Controller
 public class BoardController {
-	private final ReviewService reviewService;
-	private final BoardService boardService;
+
 	private final HttpSession session;
 	private final BoardRepository boardRepository;
 	
@@ -66,7 +63,6 @@ public class BoardController {
 	public String review(int boardId, ReviewSaveReqDto dto) {
 		User principal = (User) session.getAttribute("principal");
 		
-		reviewService.reviewReg(boardId, dto, principal);
 		return "redirect:/board/"+boardId;
 	}
 	//민영 - 리뷰 쓰기페이지 이동 @GetMapping
