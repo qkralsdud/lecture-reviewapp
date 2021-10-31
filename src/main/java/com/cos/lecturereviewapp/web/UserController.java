@@ -10,14 +10,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.lecturereviewapp.domain.user.User;
+import com.cos.lecturereviewapp.handler.ex.MyAsyncNotFoundException;
 import com.cos.lecturereviewapp.service.user.UserServiceImpl;
 import com.cos.lecturereviewapp.util.Script;
+import com.cos.lecturereviewapp.web.dto.CMRespDto;
 import com.cos.lecturereviewapp.web.dto.JoinReqDto;
 import com.cos.lecturereviewapp.web.dto.LoginReqDto;
+import com.cos.lecturereviewapp.web.dto.UserUpdateDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -31,8 +37,47 @@ public class UserController {
 	
 	// 영재 - 회원 탈퇴 페이지 이동 @GetMapping("/deleteForm") return "user/deleteForm";
 	
-	// 영재 - 회원 수정 @PutMapping("/user/{id}") 
 	
+	
+	// 영재 - 회원수정 인증
+	
+	@PutMapping("/user/{id}")
+	public @ResponseBody CMRespDto<String> upserUpdate(@PathVariable int id, @Valid @RequestBody UserUpdateDto dto,
+			BindingResult bindingResult) {
+		// 유효성
+		if (bindingResult.hasErrors()) {
+			Map<String, String> errorMap = new HashMap<>();
+			for (FieldError error : bindingResult.getFieldErrors()) {
+				errorMap.put(error.getField(), error.getDefaultMessage());
+			}
+			throw new MyAsyncNotFoundException(errorMap.toString());
+		}
+
+		// 인증
+		User principal = (User) session.getAttribute("principal");
+
+		// 권한
+		if (principal.getId() != id) {
+			throw new MyAsyncNotFoundException("회원정보를 수정할 권한이 없습니다.");
+		}
+		
+		userServiceImpl.userUpdate(principal, dto);
+		
+		// 세션 동기화 해주는 부분
+		principal.setEmail(dto.getEmail());
+		session.setAttribute("principal", principal); // 세션 값 변경
+
+		return new CMRespDto<>(1, "성공", null);
+	}
+	
+	// 영재 - 회원 수정 @PutMapping("/user/{id}")  // 인증과 수정이 둘다 put이니 에러가남 빈이
+	@GetMapping("/user/{id}")
+	public String userInfo(@PathVariable int id) {
+		// 기본은 userRepository.findById(id) 디비에서 가져와야 함.
+		// 편법은 세션값을 가져올 수도 있다.
+
+		return "user/updateForm";
+	}
 	// 영재 - 회원 수정 페이지 이동 @GetMapping("/user/{id}")  return "user/updateForm";
 	
 	// 영재 - 로그아웃 @GetMapping("/logout")

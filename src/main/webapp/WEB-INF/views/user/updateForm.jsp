@@ -86,7 +86,7 @@ button[type="submit"] {
 	color: #ffffff;
 	border: 2px solid #ffffff;
 	border-radius: 4px;
-	background-color: #007bff; /*#39459b */
+	background-color: #39459b; /*#39459b */
 	cursor: pointer;
 	text-transform: uppercase;
 	transition: background-color 0.2s linear;
@@ -118,23 +118,23 @@ nav {
 </style>
 
 <div class="form-container">
-	<form action="/test/user/loginForm" method="post">
+	<form onsubmit="update(event, ${sessionScope.principal.id})">
 		<h3>회원 정보 수정</h3>
 		<p>양식에 맞추어 수정할 내용을 입력해주세요.</p>
 		<div class="form-group">
-			<input type="text" class="form-control" required placeholder="아이디" readonly="readonly">
+			<input type="text" class="form-control" required placeholder="아이디" readonly="readonly" value="${sessionScope.principal.username}">
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" required placeholder="비밀번호" readonly="readonly">
+			<input type="password" class="form-control" required placeholder="비밀번호" readonly="readonly" >
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" required placeholder="이름" readonly="readonly">
+			<input type="text" class="form-control" required placeholder="이름" readonly="readonly" value="${sessionScope.principal.name}">
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" required placeholder="이메일">
+			<input type="text" class="form-control" required placeholder="이메일" value="${sessionScope.principal.email}" >
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" required placeholder="전화번호">
+			<input type="text" class="form-control" required placeholder="전화번호" value="${sessionScope.principal.phone}" >
 		</div>
 		<nav>
 			<button id="btn1" type="submit">수정하기</button>
