@@ -64,7 +64,8 @@ background:none;
 <!-- Custom styles for this template -->
 <link href="/assets/dist/css/signin.css" rel="stylesheet">
 </head>
-
+<br>
+<br>
 <body class="text-center">
 <div class="form-container">
 	<div class="container">

@@ -118,23 +118,23 @@ nav {
 </style>
 
 <div class="form-container">
-	<form onsubmit="update(event, ${sessionScope.principal.id})">
 		<h3>회원 정보 수정</h3>
 		<p>양식에 맞추어 수정할 내용을 입력해주세요.</p>
+	<form onsubmit="userUpdate(event, ${sessionScope.principal.id})">
 		<div class="form-group">
 			<input type="text" class="form-control" required placeholder="아이디" readonly="readonly" value="${sessionScope.principal.username}">
 		</div>
 		<div class="form-group">
-			<input type="password" class="form-control" required placeholder="비밀번호" readonly="readonly" >
+			<input type="password" class="form-control" id="password" required placeholder="비밀번호"  value="${sessionScope.principal.password}">
 		</div>
 		<div class="form-group">
 			<input type="text" class="form-control" required placeholder="이름" readonly="readonly" value="${sessionScope.principal.name}">
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" required placeholder="이메일" value="${sessionScope.principal.email}" >
+			<input type="email" id="email" class="form-control" required placeholder="이메일" value="${sessionScope.principal.email}" >
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" required placeholder="전화번호" value="${sessionScope.principal.phone}" >
+			<input type="text"  id="phone"  class="form-control" required placeholder="전화번호" value="${sessionScope.principal.phone}" >
 		</div>
 		<nav>
 			<button id="btn1" type="submit">수정하기</button>
@@ -144,6 +144,34 @@ nav {
 	</form>
 </div>
 
+<script>
+async function userUpdate(event, id){ 
+	   event.preventDefault();
+
+	   let userUpdateDto = {
+			   email: document.querySelector("#email").value,
+			   phone: document.querySelector("#phone").value,
+			 //  password: document.querySelector("#password").value
+	   };
+		
+		let response = await fetch("http://localhost:8080/user/"+id, {
+			method: "put",
+			body: JSON.stringify(userUpdateDto),
+			headers: {
+				"Content-Type": "application/json; charset=utf-8"
+			}
+		});
+		
+		let parseResponse = await response.json();
+
+		if(parseResponse.code == 1){
+			alert("업데이트 성공");
+			location.href = "/";
+		}else{
+			alert("업데이트 실패 : "+parseResponse.msg);
+		}
+}
+</script>
 
 <%@ include file="../layout/footer.jsp"%>
 

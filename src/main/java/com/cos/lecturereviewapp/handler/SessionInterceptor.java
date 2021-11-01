@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.cos.lecturereviewapp.domain.user.User;
-import com.cos.lecturereviewapp.handler.ex.MyNotFoundException;
 
 
 public class SessionInterceptor implements HandlerInterceptor{
