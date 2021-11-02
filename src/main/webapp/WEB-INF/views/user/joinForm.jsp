@@ -116,7 +116,7 @@ nav {
 			<input type="text"  name="username" class="form-control" required placeholder="아이디">
 		</div>
 		<div class="form-group">
-			<input type="text"  name="password" class="form-control" required placeholder="비밀번호">
+			<input type="password"  name="password" class="form-control" required placeholder="비밀번호">
 		</div>
 		<div class="form-group">
 			<input type="text"  name="name" class="form-control" required placeholder="이름">

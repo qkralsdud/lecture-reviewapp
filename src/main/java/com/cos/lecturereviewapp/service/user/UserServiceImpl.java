@@ -5,11 +5,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.lecturereviewapp.domain.user.User;
 import com.cos.lecturereviewapp.domain.user.UserRepository;
+import com.cos.lecturereviewapp.handler.ex.MyAsyncNotFoundException;
 import com.cos.lecturereviewapp.handler.ex.MyNotFoundException;
 import com.cos.lecturereviewapp.util.MyAlgorithm;
 import com.cos.lecturereviewapp.util.SHA;
 import com.cos.lecturereviewapp.web.dto.JoinReqDto;
 import com.cos.lecturereviewapp.web.dto.LoginReqDto;
+import com.cos.lecturereviewapp.web.dto.UserUpdateDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,9 +22,11 @@ public class UserServiceImpl implements UserService {
 	private final UserRepository userRepository;
 
 	@Override
+	@Transactional(rollbackFor = MyAsyncNotFoundException.class)
 	public void userUpdate(User principal, UserUpdateDto dto) {
-		// TODO Auto-generated method stub
-		
+		User userEntity = userRepository.findById(principal.getId())
+				.orElseThrow(()-> new MyAsyncNotFoundException("회원정보를 찾을 수 없습니다."));
+		userEntity.setEmail(dto.getEmail());
 	}
 
 	@Override

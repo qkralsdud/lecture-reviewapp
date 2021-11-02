@@ -3,6 +3,7 @@ package com.cos.lecturereviewapp.service.user;
 import com.cos.lecturereviewapp.domain.user.User;
 import com.cos.lecturereviewapp.web.dto.JoinReqDto;
 import com.cos.lecturereviewapp.web.dto.LoginReqDto;
+import com.cos.lecturereviewapp.web.dto.UserUpdateDto;
 
 public interface UserService {
 	void userUpdate(User principal, UserUpdateDto dto);
@@ -12,4 +13,5 @@ public interface UserService {
 	void userDeleteById(int id, User principal);
 
 	User userLogin(LoginReqDto dto);
+
 }
