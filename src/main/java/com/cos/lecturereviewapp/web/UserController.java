@@ -39,8 +39,9 @@ public class UserController {
 	
 	
 	
-	// 영재 - 회원수정 인증
+
 	
+	// 영재 - 회원 수정 @PutMapping("/user/{id}")  
 	@PutMapping("/user/{id}")
 	public @ResponseBody CMRespDto<String> upserUpdate(@PathVariable int id, @Valid @RequestBody UserUpdateDto dto,
 			BindingResult bindingResult) {
@@ -65,22 +66,30 @@ public class UserController {
 		
 		// 세션 동기화 해주는 부분
 		principal.setEmail(dto.getEmail());
+		principal.setPhone(dto.getPhone());
+		//principal.setPassword(dto.getPassword());
 		session.setAttribute("principal", principal); // 세션 값 변경
 
 		return new CMRespDto<>(1, "성공", null);
 	}
 	
-	// 영재 - 회원 수정 @PutMapping("/user/{id}")  // 인증과 수정이 둘다 put이니 에러가남 빈이
+	// 영재 - 회원 수정 페이지 이동 @GetMapping("/user/{id}")  return "user/updateForm";
+	
 	@GetMapping("/user/{id}")
 	public String userInfo(@PathVariable int id) {
 		// 기본은 userRepository.findById(id) 디비에서 가져와야 함.
 		// 편법은 세션값을 가져올 수도 있다.
-
+		
 		return "user/updateForm";
 	}
-	// 영재 - 회원 수정 페이지 이동 @GetMapping("/user/{id}")  return "user/updateForm";
 	
 	// 영재 - 로그아웃 @GetMapping("/logout")
+	
+	@GetMapping("/logout")
+	public String logout() {
+		session.invalidate(); // 세션 무효화 (jsessionId에 있는 값을 비우는 것)
+		return "redirect:/"; 
+	}
 	
 	// 영재 - 로그인 @PostMapping("/login")
 	@PostMapping("/login")

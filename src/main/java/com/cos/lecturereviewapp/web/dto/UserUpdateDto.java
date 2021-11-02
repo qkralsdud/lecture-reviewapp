@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserUpdateDto {
 	@NotBlank
-	private String phone;
 	private String email;
-
+	private String phone;
+	private String password;
 	
 }

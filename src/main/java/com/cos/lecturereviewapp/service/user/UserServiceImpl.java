@@ -27,6 +27,9 @@ public class UserServiceImpl implements UserService {
 		User userEntity = userRepository.findById(principal.getId())
 				.orElseThrow(()-> new MyAsyncNotFoundException("회원정보를 찾을 수 없습니다."));
 		userEntity.setEmail(dto.getEmail());
+		userEntity.setPhone(dto.getPhone());
+		//userEntity.setPassword(dto.getPassword());
+		
 	}
 
 	@Override
