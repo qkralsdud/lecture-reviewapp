@@ -7,5 +7,7 @@ import com.cos.lecturereviewapp.web.dto.ReviewSaveReqDto;
 
 public interface ReviewService {
 	void reviewReg(int boardId, ReviewSaveReqDto dto, User principal);
+	
+	void reviewupdate(int id, ReviewSaveReqDto dto, User principal );
 
 }

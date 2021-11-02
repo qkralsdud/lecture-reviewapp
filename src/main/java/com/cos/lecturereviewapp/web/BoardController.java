@@ -3,6 +3,7 @@ package com.cos.lecturereviewapp.web;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.cos.lecturereviewapp.domain.Board.Board;
 import com.cos.lecturereviewapp.domain.Board.BoardRepository;
 import com.cos.lecturereviewapp.domain.user.User;
+import com.cos.lecturereviewapp.service.review.ReviewServiceImpl;
 import com.cos.lecturereviewapp.util.Script;
 import com.cos.lecturereviewapp.web.dto.BoardSaveDto;
 import com.cos.lecturereviewapp.web.dto.CMRespDto;
@@ -21,7 +23,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Controller
 public class BoardController {
-
+	private final ReviewServiceImpl reviewServiceimpl;
 	private final HttpSession session;
 	private final BoardRepository boardRepository;
 	
@@ -49,8 +51,8 @@ public class BoardController {
 		return "board/saveForm";
 	}
 	//민영 - 리뷰 수정 @PutMapping("/board/{id}/review")
-	@PutMapping("/board/{id}/review")
-	public CMRespDto<String> reviewUpdate() {
+	@PutMapping("/board/{id}/reviewupdate")
+	public CMRespDto<String> reviewUpdate(int id,  ReviewSaveReqDto dto, BindingResult bindingResult) {
 		return new CMRespDto<>(1, "업데이트 성공", null);
 	}
 	//민영 - 리뷰 수정페이지 이동 @GetMapping("/board/reviewupdateForm")
@@ -63,6 +65,7 @@ public class BoardController {
 	public String review(int boardId, ReviewSaveReqDto dto) {
 		User principal = (User) session.getAttribute("principal");
 		
+		reviewServiceimpl.reviewReg(boardId, dto, principal);
 		return "redirect:/board/"+boardId;
 	}
 	//민영 - 리뷰 쓰기페이지 이동 @GetMapping

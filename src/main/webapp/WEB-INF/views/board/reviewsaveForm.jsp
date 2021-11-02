@@ -41,11 +41,10 @@ nav {
 </style>
 
 <div class="container">
-	<form action="/board/${boardEntity.id }/comment" method="post">
+	<form action="/board/${boardEntity.id }/review" method="post">
 		<br> <br> <br>
 
 		<!-- 별점주기 -->
-		<input type="hidden" name="rate" id="rate" value="0" />
 		<h3 class="title_star ">리뷰 작성</h3>
 		<hr>
 		<div class="star-rating space-x-4 mx-auto">

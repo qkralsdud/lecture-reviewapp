@@ -41,12 +41,9 @@ nav {
 </style>
 
 <div class="container">
-	<form onsubmit="update(event, ${boardEntity.id})" >
-<br>
-<br>
-<br>
+	<form onsubmit="update(event, ${boardEntity.id})">
+		<br> <br> <br>
 		<!-- 별점주기 -->
-		<input type="hidden" name="rate" id="rate" value="0" />
 		<h3 class="title_star ">리뷰 수정</h3>
 		<hr>
 		<div class="star-rating space-x-4 mx-auto">
@@ -65,19 +62,46 @@ nav {
 		<!-- 별점주기 끝 -->
 
 		<div class="form-group">
-			<input type="text" name="title" class="form-control"
+			<input type="text" id="title" class="form-control"
 				placeholder="Enter title">
 		</div>
 		<div class="form-group">
-			<textarea id="summernote" class="form-control" rows="5"
-				name="content"></textarea>
+			<textarea id="content" class="form-control" rows="5"></textarea>
 		</div>
-		<nav><button type="submit" class="btn btn-primary">수정완료</button></nav>
+		<nav>
+			<button type="submit" class="btn btn-primary">수정완료</button>
+		</nav>
 	</form>
 </div>
 
 <script>
-	$('#summernote').summernote({
+async function update(event, id){ 
+    
+    event.preventDefault();
+   
+    let reviewUpdateDto = {
+          title: document.querySelector("#title").value,
+          content: document.querySelector("#content").value,
+    };
+   
+       let response = await fetch("http://localhost:8080/board/"+id+"/reviewupdate", {
+          method: "put",
+          body: JSON.stringify(reviewUpdateDto),
+          headers: {
+             "Content-Type": "application/json; charset=utf-8"
+          }
+       });
+       
+       let parseResponse = await response.json(); 
+       
+       if(parseResponse.code == 1){
+          alert("업데이트 성공");
+          location.href="/board/"+id;
+       }else{
+          alert("업데이트 실패: " + parseResponse.msg);
+       }
+ }
+	$('#content').summernote({
 		height : 350
 	});
 </script>

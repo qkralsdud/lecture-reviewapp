@@ -1,6 +1,7 @@
 package com.cos.lecturereviewapp.domain.Board;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,10 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.PrePersist;
 import javax.persistence.Transient;
 
+import com.cos.lecturereviewapp.domain.review.Review;
 import com.cos.lecturereviewapp.domain.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -65,6 +70,11 @@ public class Board {
 	@JoinColumn(name = "userId")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private User user;
+	
+	@JsonIgnoreProperties({"board"})
+	@OneToMany(mappedBy = "board", fetch = FetchType.LAZY)
+	@OrderBy("id desc")
+	private List<Review> reviews;
 	
 	@Transient
 	private int ratingmin;

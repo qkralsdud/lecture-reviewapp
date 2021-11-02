@@ -8,6 +8,7 @@ import com.cos.lecturereviewapp.domain.Board.BoardRepository;
 import com.cos.lecturereviewapp.domain.review.Review;
 import com.cos.lecturereviewapp.domain.review.ReviewRepository;
 import com.cos.lecturereviewapp.domain.user.User;
+import com.cos.lecturereviewapp.handler.ex.MyAsyncNotFoundException;
 import com.cos.lecturereviewapp.handler.ex.MyNotFoundException;
 import com.cos.lecturereviewapp.web.dto.ReviewSaveReqDto;
 
@@ -33,6 +34,25 @@ public class ReviewServiceImpl implements ReviewService{
 		review.setBoard(boardEntity);
 		
 		reviewRepository.save(review);
+	}
+
+	@Transactional(rollbackFor = MyNotFoundException.class)
+	@Override
+	public void reviewupdate(int id, ReviewSaveReqDto dto, User principal) {
+		
+		Review reviewEntity = reviewRepository.findById(id)
+				.orElseThrow(() -> new MyAsyncNotFoundException("없는 리뷰 번호 입니다."));
+		
+		Board boardEntity = boardRepository.findById(id)
+				.orElseThrow( () ->  new MyAsyncNotFoundException("해당 게시글을 찾을 수 없습니다") );
+
+		if(principal.getId() != boardEntity.getUser().getId()) {
+			throw new MyAsyncNotFoundException("해당 권한없음");
+		}
+		
+		reviewEntity.setTitle(dto.getTitle());
+		reviewEntity.setContent(dto.getContent());
+		reviewEntity.setRating(dto.getRating());		
 	}
 	
 
