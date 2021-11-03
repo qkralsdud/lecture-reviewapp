@@ -36,14 +36,16 @@ public class UserController {
 	// 영재 - 회원 탈퇴 @DeleteMapping("/user/{id}")
 	
 	// 영재 - 회원 탈퇴 페이지 이동 @GetMapping("/deleteForm") return "user/deleteForm";
+	@GetMapping("/deleteForm")
+	public String deleteForm(@PathVariable int id) {
 	
+		return "user/deleteForm";
+	}
 	
-	
-
 	
 	// 영재 - 회원 수정 @PutMapping("/user/{id}")  
 	@PutMapping("/user/{id}")
-	public @ResponseBody CMRespDto<String> upserUpdate(@PathVariable int id, @Valid @RequestBody UserUpdateDto dto,
+	public @ResponseBody CMRespDto<String> userUpdate(@PathVariable int id, @Valid @RequestBody UserUpdateDto dto,
 			BindingResult bindingResult) {
 		// 유효성
 		if (bindingResult.hasErrors()) {
@@ -67,7 +69,7 @@ public class UserController {
 		// 세션 동기화 해주는 부분
 		principal.setEmail(dto.getEmail());
 		principal.setPhone(dto.getPhone());
-		//principal.setPassword(dto.getPassword());
+		principal.setPassword(dto.getPassword());
 		session.setAttribute("principal", principal); // 세션 값 변경
 
 		return new CMRespDto<>(1, "성공", null);

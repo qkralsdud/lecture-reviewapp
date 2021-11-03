@@ -125,7 +125,7 @@ nav {
 			<input type="text" class="form-control" required placeholder="아이디" readonly="readonly" value="${sessionScope.principal.username}">
 		</div>
 		<div class="form-group">
-			<input type="password" class="form-control" id="password" required placeholder="비밀번호"  value="${sessionScope.principal.password}">
+			<input type="password" class="form-control" id="password" required placeholder="비밀번호"  >
 		</div>
 		<div class="form-group">
 			<input type="text" class="form-control" required placeholder="이름" readonly="readonly" value="${sessionScope.principal.name}">
@@ -151,7 +151,7 @@ async function userUpdate(event, id){
 	   let userUpdateDto = {
 			   email: document.querySelector("#email").value,
 			   phone: document.querySelector("#phone").value,
-			 //  password: document.querySelector("#password").value
+			   password: document.querySelector("#password").value
 	   };
 		
 		let response = await fetch("http://localhost:8080/user/"+id, {

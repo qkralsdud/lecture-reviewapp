@@ -26,9 +26,10 @@ public class UserServiceImpl implements UserService {
 	public void userUpdate(User principal, UserUpdateDto dto) {
 		User userEntity = userRepository.findById(principal.getId())
 				.orElseThrow(()-> new MyAsyncNotFoundException("회원정보를 찾을 수 없습니다."));
+		String encPassword = SHA.encrypt(dto.getPassword(), MyAlgorithm.SHA256);
 		userEntity.setEmail(dto.getEmail());
 		userEntity.setPhone(dto.getPhone());
-		//userEntity.setPassword(dto.getPassword());
+		userEntity.setPassword(encPassword);
 		
 	}
 
@@ -43,8 +44,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional(rollbackFor = MyNotFoundException.class)
 	public void userDeleteById(int id, User principal) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
