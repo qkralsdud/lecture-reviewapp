@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,10 +17,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cos.lecturereviewapp.domain.Board.Board;
 import com.cos.lecturereviewapp.domain.Board.BoardRepository;
 import com.cos.lecturereviewapp.domain.user.User;
 import com.cos.lecturereviewapp.handler.ex.MyAsyncNotFoundException;
+import com.cos.lecturereviewapp.service.board.BoardService;
 import com.cos.lecturereviewapp.service.review.ReviewServiceImpl;
 import com.cos.lecturereviewapp.util.Script;
 import com.cos.lecturereviewapp.web.dto.BoardSaveDto;
@@ -34,10 +35,23 @@ public class BoardController {
 	private final ReviewServiceImpl reviewServiceimpl;
 	private final HttpSession session;
 	private final BoardRepository boardRepository;
+	private final BoardService boardService;
 	
 	// 주완 - 강의 삭제 @DeleteMapping("/board/{id}")
+	@DeleteMapping("/board/{id}")
+	public @ResponseBody CMRespDto<String> deleteById(@PathVariable int id) {
+		User principal = (User) session.getAttribute("principal");
+		
+		boardService.boardDelete(id, principal);
+		
+		return new CMRespDto<String>(1, "성공", null);
+	}
 	
 	// 주완 - 강의 상세보기 @GetMapping("/board/{id}") return "board/detail"
+	@GetMapping("/board/{id}")
+	public String detail() {
+		return "board/detail";
+	}
 	
 	// 주완 - 강의 리스트(메인) 페이지 이동 @GetMapping("/board/list")
 	@GetMapping("/")
@@ -46,12 +60,19 @@ public class BoardController {
 	}
 	// 주완 - 강의 등록 @PostMapping("/board") 
 	@PostMapping("/board")
-	public @ResponseBody String save(BoardSaveDto dto) {
-		Board board = dto.toEntity();
+	public @ResponseBody String boardSave(@Valid BoardSaveDto dto, BindingResult bindingResult) {
 		User principal = (User) session.getAttribute("principal");
-		board.setUser(principal);
-		boardRepository.save(board);
-		return Script.href("/", "글쓰기 성공");
+
+		if (bindingResult.hasErrors()) {
+			Map<String, String> errorMap = new HashMap<>();
+			for (FieldError error : bindingResult.getFieldErrors()) {
+				errorMap.put(error.getField(), error.getDefaultMessage());
+			}
+			return Script.back(errorMap.toString());
+		}
+		boardService.boardSave(dto, principal);
+		
+		return Script.href("/", "강의 등록 완료");
 	}
 	// 주완 - 강의 등록 페이지 이동 @GetMapping("/board/saveForm")
 	@GetMapping("/board/saveForm")

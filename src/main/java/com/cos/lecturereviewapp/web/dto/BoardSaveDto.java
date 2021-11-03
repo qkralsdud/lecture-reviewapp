@@ -37,7 +37,7 @@ public class BoardSaveDto {
 	// 커리큘럼 step5
 	private String curriculum5;
 	
-	public Board toEntity() {
+	public Board toEntity(User principal) {
 		Board board = new Board();
 		board.setFilename(filename);
 		board.setTitle(title);
