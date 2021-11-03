@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.lecturereviewapp.domain.Board.BoardRepository;
 import com.cos.lecturereviewapp.domain.user.User;
+import com.cos.lecturereviewapp.handler.ex.MyAsyncNotFoundException;
 import com.cos.lecturereviewapp.service.board.BoardService;
 import com.cos.lecturereviewapp.service.review.ReviewServiceImpl;
 import com.cos.lecturereviewapp.util.Script;
@@ -79,25 +81,40 @@ public class BoardController {
 	}
 	//민영 - 리뷰 수정 @PutMapping("/board/{id}/review")
 	@PutMapping("/board/{id}/reviewupdate")
-	public CMRespDto<String> reviewUpdate(int id,  ReviewSaveReqDto dto, BindingResult bindingResult) {
-		return new CMRespDto<>(1, "업데이트 성공", null);
+	public @ResponseBody CMRespDto<String> reviewUpdate(@PathVariable int id,  @Valid @RequestBody ReviewSaveReqDto dto, BindingResult bindingResult) {
+		
+		if(bindingResult.hasErrors()) {			
+			Map<String, String> errorMap = new HashMap<>();
+			for(FieldError error : bindingResult.getFieldErrors()) {
+				errorMap.put(error.getField(), error.getDefaultMessage());
+			}
+			throw new MyAsyncNotFoundException(errorMap.toString());
+		}
+		
+		User principal = (User) session.getAttribute("principal");
+		reviewServiceimpl.reviewupdate(id, dto, principal);
+		
+		return new CMRespDto<>(1, "리뷰 업데이트 성공", null);
 	}
+	
 	//민영 - 리뷰 수정페이지 이동 @GetMapping("/board/reviewupdateForm")
 	@GetMapping("/board/{boardId}/reviewupdateForm")
 	public String reviewupdateForm() {
 		return "board/reviewupdateForm";
 	}
+	
 	//민영 - 리뷰 등록 @PostMapping("/board/{boardId}/review")
 	@PostMapping("/board/{boardId}/review")
-	public String review(int boardId, ReviewSaveReqDto dto) {
+	public String review(@PathVariable int boardId, ReviewSaveReqDto dto) {
 		User principal = (User) session.getAttribute("principal");
 		
 		reviewServiceimpl.reviewReg(boardId, dto, principal);
 		return "redirect:/board/"+boardId;
 	}
+	
 	//민영 - 리뷰 쓰기페이지 이동 @GetMapping
 	@GetMapping("/board/{boardId}/reviewsaveForm")
-	public String reviewsaveForm() {
+	public String reviewsaveForm(@PathVariable int boardId) {
 		return "board/reviewsaveForm";
 	}
 }
