@@ -26,6 +26,7 @@ public class ReviewServiceImpl implements ReviewService{
 	public void reviewReg(int boardId, ReviewSaveReqDto dto, User principal) {
 		Board boardEntity = boardRepository.findById(boardId)
 				.orElseThrow(() -> new MyNotFoundException("해당 게시글을 찾을 수 없습니다."));
+		
 		Review review = new Review();
 		review.setTitle(dto.getTitle());
 		review.setContent(dto.getContent());
@@ -42,11 +43,8 @@ public class ReviewServiceImpl implements ReviewService{
 		
 		Review reviewEntity = reviewRepository.findById(id)
 				.orElseThrow(() -> new MyAsyncNotFoundException("없는 리뷰 번호 입니다."));
-		
-		Board boardEntity = boardRepository.findById(id)
-				.orElseThrow( () ->  new MyAsyncNotFoundException("해당 게시글을 찾을 수 없습니다") );
 
-		if(principal.getId() != boardEntity.getUser().getId()) {
+		if(principal.getId() != reviewEntity.getUser().getId()) {
 			throw new MyAsyncNotFoundException("해당 권한없음");
 		}
 		

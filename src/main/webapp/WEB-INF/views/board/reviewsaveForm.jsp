@@ -1,42 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
+<link rel="stylesheet"
+   href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+   integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+   crossorigin="anonymous" />
 <style>
+.star {
+   flex-direction: column;
+   text-align: center;
+}
+
 nav {
 	display: grid;
 	grid-template-columns: auto auto;
 	justify-content: flex-end;
 }
 
-.star-rating {
-	display: flex;
-	flex-direction: row-reverse;
-	font-size: 2.25rem;
-	line-height: 2.5rem;
-	justify-content: space-around;
-	padding: 0 0.2em;
-	text-align: center;
-	width: 5em;
+label {
+   background:
+      url('http://miuu227.godohosting.com/images/icon/ico_review.png')
+      no-repeat right 0;
+   background-size: auto 100%;
+   width: 60px;
+   height: 60px;
+   display: inline-block;
+   text-indent: -9999px;
+   cursor: pointer;
 }
 
-.star-rating input {
-	display: none;
+.starR input {
+   display: none;
 }
 
-.star-rating label {
-	-webkit-text-fill-color: transparent;
-	/* Will override color (regardless of order) */
-	-webkit-text-stroke-width: 2.3px;
-	-webkit-text-stroke-color: #2b2a29;
-	cursor: pointer;
+.starR.on {
+   background-position: 0 0;
 }
 
-.star-rating :checked ~ label {
-	-webkit-text-fill-color: gold;
-}
-
-.star-rating label:hover, .star-rating label:hover ~ label {
-	-webkit-text-fill-color: #fff58c;
+[type=radio] {
+   position: absolute;
+   opacity: 0;
+   width: 0;
+   height: 0;
 }
 </style>
 
@@ -47,18 +52,14 @@ nav {
 		<!-- 별점주기 -->
 		<h3 class="title_star ">리뷰 작성</h3>
 		<hr>
-		<div class="star-rating space-x-4 mx-auto">
-			<input type="radio" id="5-stars" name="rating" value="5"
-				v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
-			<input type="radio" id="4-stars" name="rating" value="4"
-				v-model="ratings" /> <label for="4-stars" class="star">★</label> <input
-				type="radio" id="3-stars" name="rating" value="3" v-model="ratings" />
-			<label for="3-stars" class="star">★</label> <input type="radio"
-				id="2-stars" name="rating" value="2" v-model="ratings" /> <label
-				for="2-stars" class="star">★</label> <input type="radio" id="1-star"
-				name="rating" value="1" v-model="ratings" /> <label for="1-star"
-				class="star">★</label>
-		</div>
+         <div class="starRev">
+            <input type="radio" id="1-stars" value="1" /><label for="1-stars" class="starR on">1</label> 
+            <input type="radio" id="2-stars" value="2" /><label for="2-stars" class="starR">2</label> 
+            <input type="radio" id="3-stars" value="3" /><label for="3-stars" class="starR">3</label> 
+            <input type="radio" id="4-stars" value="4" /><label for="4-stars" class="starR">4</label> 
+            <input type="radio" id="5-stars" value="5" /><label for="5-stars" class="starR">5</label>
+            <input type="hidden"  id="check_radio" name="rating" />
+         </div>
 		<br />
 		<!-- 별점주기 끝 -->
 
@@ -78,6 +79,14 @@ nav {
 	$('#summernote').summernote({
 		height : 350
 	});
+	
+
+   $('.starRev label').click(function(e) {
+      $(this).parent().children('label').removeClass('on');
+      $(this).addClass('on').prevAll('label').addClass('on');
+      $("#check_radio").val($(this).text());
+      return false;
+   });
 </script>
 
 <%@ include file="../layout/footer.jsp"%>
