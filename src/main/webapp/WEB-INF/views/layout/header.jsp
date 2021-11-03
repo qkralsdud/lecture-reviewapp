@@ -41,35 +41,37 @@ header {
 </head>
 <body>
 	<header>
-	
+
 		<!-- 네브바 시작 -->
 		<nav class="navbar navbar-expand-sm bg-primary navbar-dark ">
-		
+
 			<a class="navbar-brand" href="/">그린컴퓨터아카데미</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#collapsibleNavbar">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-				<c:choose>
-				<c:when test="${empty sessionScope.principal}">
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="/joinForm">회원가입</a></li>				
+
+					<c:choose>
+						<c:when test="${empty sessionScope.principal}">
+							<li class="nav-item"><a class="nav-link" href="/loginForm">로그인</a></li>
+							<li class="nav-item"><a class="nav-link" href="/joinForm">회원가입</a></li>
+						</c:when>
+						<c:when test="${sessionScope.principal.username eq 'master'}">
+								<li class="nav-item"><a class="nav-link" href="/board/saveForm">강의 등록</a></li>
+								<li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
+						</c:when>	
+						<c:otherwise>
+							<li class="nav-item"><a class="nav-link" href="/user/${sessionScope.principal.id}">회원정보수정</a></li>
+							<li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
+						</c:otherwise>
+					</c:choose>
+
 				</ul>
 			</div>
-				</c:when>
-						<c:otherwise>
-						<div class="collapse navbar-collapse" id="collapsibleNavbar">
-				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="/user/${sessionScope.principal.id}">회원정보수정</a></li>				
-					<li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>				
-						</ul>
-						</div>
-				</c:otherwise>
-				</c:choose>
 		</nav>
-		
+
 	</header>
 </body>
 </html>
