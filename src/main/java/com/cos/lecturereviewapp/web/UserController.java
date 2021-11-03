@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +24,7 @@ import com.cos.lecturereviewapp.util.Script;
 import com.cos.lecturereviewapp.web.dto.CMRespDto;
 import com.cos.lecturereviewapp.web.dto.JoinReqDto;
 import com.cos.lecturereviewapp.web.dto.LoginReqDto;
+import com.cos.lecturereviewapp.web.dto.UserDeleteDto;
 import com.cos.lecturereviewapp.web.dto.UserUpdateDto;
 
 import lombok.RequiredArgsConstructor;
@@ -34,9 +36,22 @@ public class UserController {
 	private final HttpSession session;
 	
 	// 영재 - 회원 탈퇴 @DeleteMapping("/user/{id}")
+	@DeleteMapping("/user/{id}")
+	public @ResponseBody CMRespDto<String> userDelete(@PathVariable int id) {
+
+
+		// 인증
+		User principal = (User) session.getAttribute("principal");
+
+		
+		userServiceImpl.userDelete(id, principal );
+		
+
+		return new CMRespDto<>(1, "성공", null);
+	}
 	
 	// 영재 - 회원 탈퇴 페이지 이동 @GetMapping("/deleteForm") return "user/deleteForm";
-	@GetMapping("/deleteForm")
+	@GetMapping("/deleteForm/{id}")
 	public String deleteForm(@PathVariable int id) {
 	
 		return "user/deleteForm";

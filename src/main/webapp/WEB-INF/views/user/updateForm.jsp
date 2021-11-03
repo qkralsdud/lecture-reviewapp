@@ -139,7 +139,7 @@ nav {
 		<nav>
 			<button id="btn1" type="submit">수정하기</button>
 			<h>더이상 이용하지 않는다면 <a
-				href="/test/user/deleteForm">회원탈퇴</a> 바로가기</h>
+				href="/deleteForm/${sessionScope.principal.id}">회원탈퇴</a> 바로가기</h>
 		</nav>
 	</form>
 </div>
@@ -155,7 +155,7 @@ async function userUpdate(event, id){
 	   };
 		
 		let response = await fetch("http://localhost:8080/user/"+id, {
-			method: "put",
+			method: "Put",
 			body: JSON.stringify(userUpdateDto),
 			headers: {
 				"Content-Type": "application/json; charset=utf-8"

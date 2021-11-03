@@ -10,7 +10,7 @@ public interface UserService {
 	
 	void userJoin(JoinReqDto dto);
 	
-	void userDeleteById(int id, User principal);
+	void userDelete(int id, User principal);
 
 	User userLogin(LoginReqDto dto);
 
