@@ -100,7 +100,7 @@ table {
 <br>
 <!-- 윗부분 시작-->
 <div class="container">
-	<form action="#" method="post">
+	<form action="/board/{id}/detail" method="post">
 		<!-- 강의소개 -->
 		<div class="header">
 			<section>
@@ -135,7 +135,7 @@ table {
 			CURRICULUM <span>커리큘럼</span>
 		</h3>
 		</br>
-		<c:forEach var="i" begin="1" end="5" items="${boardEntity }">
+		<c:forEach var="i" begin="1" end="5" items="${boardsEntity }">
 			<table class="table table-dark">
 				<tr>
 					<div id="last">

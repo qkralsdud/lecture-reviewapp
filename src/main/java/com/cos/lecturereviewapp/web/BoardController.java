@@ -1,12 +1,14 @@
 package com.cos.lecturereviewapp.web;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cos.lecturereviewapp.domain.Board.Board;
 import com.cos.lecturereviewapp.domain.Board.BoardRepository;
 import com.cos.lecturereviewapp.domain.user.User;
 import com.cos.lecturereviewapp.handler.ex.MyAsyncNotFoundException;
@@ -49,13 +52,15 @@ public class BoardController {
 	
 	// 주완 - 강의 상세보기 @GetMapping("/board/{id}") return "board/detail"
 	@GetMapping("/board/{id}")
-	public String detail() {
+	public String detail(@PathVariable int id, Model model) {
+		model.addAttribute("boardEntity", boardService.boardDetail(id));
 		return "board/detail";
 	}
 	
 	// 주완 - 강의 리스트(메인) 페이지 이동 @GetMapping("/board/list")
 	@GetMapping("/")
-	public String home() {
+	public String home(Model model) {
+
 		return "board/list";
 	}
 	// 주완 - 강의 등록 @PostMapping("/board") 

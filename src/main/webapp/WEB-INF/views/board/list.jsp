@@ -43,7 +43,7 @@
             <div class="card-body text-center" >
                 <h4 class="card-title">${boardEntity.title }</h4>
                 <p class="card-text box" >${boardEntity.intro }</p>
-                <a href=" /test/board/detail" class="btn btn-primary">상세보기</a>
+                <a href=" board/{id}" class="btn btn-primary">상세보기</a>
             </div>
             <br>
         </div> 
