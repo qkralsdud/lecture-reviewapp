@@ -71,50 +71,49 @@ background:none;
 	<div class="container">
 		<main class="form-signin">
 			
-
+<form action="/delete" method= "post">
 				<img class="mb-4" src="/assets/brand/green.svg" alt="" width="150"
 					height="60">
 				<h1 class="h5 mb-3 fw-normal">비밀번호를 입력해주세요</h1>
 				<div class="form-floating">
-					<input type="text" class="form-control" id="floatingInput"
-							 readonly="readonly" value="${sessionScope.principal.username}"> <br>
-					<input type="password" class="form-control" id="password"
+					<input type="text" class="form-control" id="id"  name="username" readonly="readonly" value="${sessionScope.principal.username}"> <br>
+					<input type="password" class="form-control" id="password"   name="password" 
 						placeholder="Password">
 
 				</div>
 
 				<nav>
 					<button id="btn1" class="w-100 btn btn-lg btn-primary"
-						type="submit" onclick="userDelete(${sessionScope.principal.id})">회원탈퇴</button>
+						type="submit" >회원탈퇴</button>
 
 					<button id="btn2" class="w-100 btn btn-lg btn-primary"
 						type="submit" onclick="location.href='/' ">취소</button>
 				</nav>
 				<p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
 
-	
+	</form>
 
 		</main>
 	</div>	
 </div>
 
 <script>
-async function userDelete(id){ 
+/*async function userDelete(id){ 
 	   //event.preventDefault();
 
-/* 	   let userDeleteDto = {
-			   password: document.querySelector("#password").value
-	   }; */
+// 	   let userDeleteDto = {
+//			   password: document.querySelector("#password").value
+//	   }; 
 		
-		let response = await fetch("http://localhost:8080/deleteForm/"+id, {
-			method: "delete"
-/* 			body: JSON.stringify(userDeleteDto),
-			headers: {
-				"Content-Type": "application/json; charset=utf-8"
-			} */
+		//let response = await fetch("http://localhost:8080/deleteForm/"+id, {
+			//method: "delete"
+// 			body: JSON.stringify(userDeleteDto),
+//			headers: {
+//				"Content-Type": "application/json; charset=utf-8"
+//			} 
 		});
 		
-		let parseResponse = await response.json();
+	let parseResponse = await response.json();
 
 		if(parseResponse.code == 1){
 			alert("업데이트 성공");
@@ -122,7 +121,7 @@ async function userDelete(id){
 		}else{
 			alert("업데이트 실패 : "+parseResponse.msg);
 		}
-}
+} */
 </script>
 
 
