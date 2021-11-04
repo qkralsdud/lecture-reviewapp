@@ -125,7 +125,7 @@ nav {
 			<input type="text" class="form-control" required placeholder="아이디" readonly="readonly" value="${sessionScope.principal.username}">
 		</div>
 		<div class="form-group">
-			<input type="password" class="form-control" id="password" required placeholder="비밀번호"  value="${sessionScope.principal.password}">
+			<input type="password" class="form-control" id="password" required placeholder="비밀번호"  >
 		</div>
 		<div class="form-group">
 			<input type="text" class="form-control" required placeholder="이름" readonly="readonly" value="${sessionScope.principal.name}">
@@ -139,7 +139,7 @@ nav {
 		<nav>
 			<button id="btn1" type="submit">수정하기</button>
 			<h>더이상 이용하지 않는다면 <a
-				href="/test/user/deleteForm">회원탈퇴</a> 바로가기</h>
+				href="/deleteForm/${sessionScope.principal.id}">회원탈퇴</a> 바로가기</h>
 		</nav>
 	</form>
 </div>
@@ -151,11 +151,11 @@ async function userUpdate(event, id){
 	   let userUpdateDto = {
 			   email: document.querySelector("#email").value,
 			   phone: document.querySelector("#phone").value,
-			 //  password: document.querySelector("#password").value
+			   password: document.querySelector("#password").value
 	   };
 		
 		let response = await fetch("http://localhost:8080/user/"+id, {
-			method: "put",
+			method: "Put",
 			body: JSON.stringify(userUpdateDto),
 			headers: {
 				"Content-Type": "application/json; charset=utf-8"

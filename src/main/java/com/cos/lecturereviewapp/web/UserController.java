@@ -23,6 +23,7 @@ import com.cos.lecturereviewapp.util.Script;
 import com.cos.lecturereviewapp.web.dto.CMRespDto;
 import com.cos.lecturereviewapp.web.dto.JoinReqDto;
 import com.cos.lecturereviewapp.web.dto.LoginReqDto;
+import com.cos.lecturereviewapp.web.dto.UserDeleteDto;
 import com.cos.lecturereviewapp.web.dto.UserUpdateDto;
 
 import lombok.RequiredArgsConstructor;
@@ -34,16 +35,47 @@ public class UserController {
 	private final HttpSession session;
 	
 	// 영재 - 회원 탈퇴 @DeleteMapping("/user/{id}")
+	@PostMapping("/delete")
+	public @ResponseBody String delete(@Valid LoginReqDto dto, BindingResult bindingResult) {
+		
+
+		
+		if (bindingResult.hasErrors()) {
+			Map<String, String> errorMap = new HashMap<>();
+			for (FieldError error : bindingResult.getFieldErrors()) {
+				errorMap.put(error.getField(), error.getDefaultMessage());
+			}
+			return Script.back(errorMap.toString());
+		}
+		System.out.println(dto.getUsername());
+		System.out.println(dto.getPassword());
+		
+		System.out.println(userServiceImpl.userDelete(dto));
+		
+		User userEntity =  userServiceImpl.userDelete(dto);
+		
+		System.out.println(userEntity);
+		
+		if (userEntity != null) { // username, password 잘못 기입
+			return Script.back("비밀번호를 잘못 입력하였습니다.");
+		} else {
+			// 세션 날라가는 조건 : 1. session.invalidate(), 2. 브라우저를 닫으면 날라감
+			session.invalidate();
+			return Script.href("/", "회원 탈퇴 완료");
+		}
+	}
 	
 	// 영재 - 회원 탈퇴 페이지 이동 @GetMapping("/deleteForm") return "user/deleteForm";
+	@GetMapping("/deleteForm/{id}")
+	public String deleteForm(@PathVariable int id) {
 	
+		return "user/deleteForm";
+	}
 	
-	
-
 	
 	// 영재 - 회원 수정 @PutMapping("/user/{id}")  
 	@PutMapping("/user/{id}")
-	public @ResponseBody CMRespDto<String> upserUpdate(@PathVariable int id, @Valid @RequestBody UserUpdateDto dto,
+	public @ResponseBody CMRespDto<String> userUpdate(@PathVariable int id, @Valid @RequestBody UserUpdateDto dto,
 			BindingResult bindingResult) {
 		// 유효성
 		if (bindingResult.hasErrors()) {
@@ -67,7 +99,7 @@ public class UserController {
 		// 세션 동기화 해주는 부분
 		principal.setEmail(dto.getEmail());
 		principal.setPhone(dto.getPhone());
-		//principal.setPassword(dto.getPassword());
+		principal.setPassword(dto.getPassword());
 		session.setAttribute("principal", principal); // 세션 값 변경
 
 		return new CMRespDto<>(1, "성공", null);

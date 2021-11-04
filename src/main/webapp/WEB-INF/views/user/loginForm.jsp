@@ -58,10 +58,10 @@ body {
 				<h1 class="h3 mb-3 fw-normal">로그인</h1>
 				<div class="form-floating">
 					<!--     <label for="floatingInput">Email address</label> -->
-					<input type="text" class="form-control" id="floatingInput"  name="username"
+					<input type="text" class="form-control" id="id"  name="username"
 						placeholder="UserId"> <br>
 					<!--      <label for="floatingPassword">Password</label> -->
-					<input type="password" class="form-control" id="floatingPassword"  name="password"
+					<input type="password" class="form-control" id="Password"  name="password"
 						placeholder="Password">
 				</div>
 
