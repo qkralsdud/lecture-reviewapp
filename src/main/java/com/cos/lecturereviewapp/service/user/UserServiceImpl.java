@@ -11,6 +11,7 @@ import com.cos.lecturereviewapp.util.MyAlgorithm;
 import com.cos.lecturereviewapp.util.SHA;
 import com.cos.lecturereviewapp.web.dto.JoinReqDto;
 import com.cos.lecturereviewapp.web.dto.LoginReqDto;
+import com.cos.lecturereviewapp.web.dto.UserDeleteDto;
 import com.cos.lecturereviewapp.web.dto.UserUpdateDto;
 
 import lombok.RequiredArgsConstructor;
@@ -26,9 +27,10 @@ public class UserServiceImpl implements UserService {
 	public void userUpdate(User principal, UserUpdateDto dto) {
 		User userEntity = userRepository.findById(principal.getId())
 				.orElseThrow(()-> new MyAsyncNotFoundException("회원정보를 찾을 수 없습니다."));
+		String encPassword = SHA.encrypt(dto.getPassword(), MyAlgorithm.SHA256);
 		userEntity.setEmail(dto.getEmail());
 		userEntity.setPhone(dto.getPhone());
-		//userEntity.setPassword(dto.getPassword());
+		userEntity.setPassword(encPassword);
 		
 	}
 
@@ -40,11 +42,19 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(dto.toEntity());
 	
 		
-	}
+	}	
 
+	@Transactional
 	@Override
-	public void userDeleteById(int id, User principal) {
-		// TODO Auto-generated method stub
+	public int userDelete(LoginReqDto dto) {
+		
+
+		/*
+		 * String encPassword = SHA.encrypt(dto.getPassword(), MyAlgorithm.SHA256);
+		 * System.out.println(dto.getUsername()); System.out.println(encPassword);
+		 * return userRepository.uDelete(dto.getUsername(), encPassword);
+		 */
+		return userRepository.uDelete(dto.getUsername(), SHA.encrypt(dto.getPassword(), MyAlgorithm.SHA256));
 		
 	}
 
