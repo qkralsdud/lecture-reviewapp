@@ -11,11 +11,7 @@ public interface UserService {
 	
 	void userJoin(JoinReqDto dto);
 	
-<<<<<<< HEAD
-	User userDelete( LoginReqDto dto);
-=======
 	int userDelete( LoginReqDto dto);
->>>>>>> 정영재
 
 	User userLogin(LoginReqDto dto);
 

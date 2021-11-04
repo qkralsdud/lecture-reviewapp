@@ -44,11 +44,6 @@ public class UserServiceImpl implements UserService {
 		
 	}	
 
-<<<<<<< HEAD
-	
-	@Override
-	public User userDelete(LoginReqDto dto) {
-=======
 	@Transactional
 	@Override
 	public int userDelete(LoginReqDto dto) {
@@ -59,8 +54,6 @@ public class UserServiceImpl implements UserService {
 		 * System.out.println(dto.getUsername()); System.out.println(encPassword);
 		 * return userRepository.uDelete(dto.getUsername(), encPassword);
 		 */
-		
->>>>>>> 정영재
 		return userRepository.uDelete(dto.getUsername(), SHA.encrypt(dto.getPassword(), MyAlgorithm.SHA256));
 		
 	}

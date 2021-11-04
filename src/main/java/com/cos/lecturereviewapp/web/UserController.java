@@ -34,13 +34,11 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 	private final UserServiceImpl userServiceImpl;
 	private final HttpSession session;
-	
+
 	// 영재 - 회원 탈퇴 @DeleteMapping("/user/{id}")
 	@PostMapping("/delete")
 	public @ResponseBody String delete(@Valid LoginReqDto dto, BindingResult bindingResult) {
-		
 
-		
 		if (bindingResult.hasErrors()) {
 			Map<String, String> errorMap = new HashMap<>();
 			for (FieldError error : bindingResult.getFieldErrors()) {
@@ -50,57 +48,29 @@ public class UserController {
 		}
 		System.out.println(dto.getUsername());
 		System.out.println(dto.getPassword());
-		
-<<<<<<< HEAD
-		System.out.println(userServiceImpl.userDelete(dto));
-		
-		User userEntity =  userServiceImpl.userDelete(dto);
-		
-		System.out.println(userEntity);
-		
-		if (userEntity != null) { // username, password 잘못 기입
+
+		int result = userServiceImpl.userDelete(dto);
+
+		// System.out.println("삭제 유무 : "+result);
+
+		if (result == 0) { // username, password 잘못 기입
 			return Script.back("비밀번호를 잘못 입력하였습니다.");
 		} else {
+
 			// 세션 날라가는 조건 : 1. session.invalidate(), 2. 브라우저를 닫으면 날라감
 			session.invalidate();
 			return Script.href("/", "회원 탈퇴 완료");
 		}
 	}
-	
+
 	// 영재 - 회원 탈퇴 페이지 이동 @GetMapping("/deleteForm") return "user/deleteForm";
 	@GetMapping("/deleteForm/{id}")
 	public String deleteForm(@PathVariable int id) {
-	
+
 		return "user/deleteForm";
 	}
-=======
-		int result = userServiceImpl.userDelete(dto);
-		
-	//	 System.out.println("삭제 유무 : "+result);
-	
-	if (result == 0) { // username, password 잘못 기입
-		return Script.back("비밀번호를 잘못 입력하였습니다.");
-	} else {
-		
-		// 세션 날라가는 조건 : 1. session.invalidate(), 2. 브라우저를 닫으면 날라감
-		session.invalidate();
-		return Script.href("/", "회원 탈퇴 완료");
-	}
-	}
-	
-	// 영재 - 회원 탈퇴 페이지 이동 @GetMapping("/deleteForm") return "user/deleteForm";
-	@GetMapping("/deleteForm/{id}")
-	public String deleteForm(@PathVariable int id) {
->>>>>>> 정영재
-	
-		return "user/deleteForm";
-	}
-	
-<<<<<<< HEAD
-=======
-	
->>>>>>> 정영재
-	// 영재 - 회원 수정 @PutMapping("/user/{id}")  
+
+	// 영재 - 회원 수정 @PutMapping("/user/{id}")
 	@PutMapping("/user/{id}")
 	public @ResponseBody CMRespDto<String> userUpdate(@PathVariable int id, @Valid @RequestBody UserUpdateDto dto,
 			BindingResult bindingResult) {
@@ -120,9 +90,9 @@ public class UserController {
 		if (principal.getId() != id) {
 			throw new MyAsyncNotFoundException("회원정보를 수정할 권한이 없습니다.");
 		}
-		
+
 		userServiceImpl.userUpdate(principal, dto);
-		
+
 		// 세션 동기화 해주는 부분
 		principal.setEmail(dto.getEmail());
 		principal.setPhone(dto.getPhone());
@@ -131,25 +101,25 @@ public class UserController {
 
 		return new CMRespDto<>(1, "성공", null);
 	}
-	
-	// 영재 - 회원 수정 페이지 이동 @GetMapping("/user/{id}")  return "user/updateForm";
-	
+
+	// 영재 - 회원 수정 페이지 이동 @GetMapping("/user/{id}") return "user/updateForm";
+
 	@GetMapping("/user/{id}")
 	public String userInfo(@PathVariable int id) {
 		// 기본은 userRepository.findById(id) 디비에서 가져와야 함.
 		// 편법은 세션값을 가져올 수도 있다.
-		
+
 		return "user/updateForm";
 	}
-	
+
 	// 영재 - 로그아웃 @GetMapping("/logout")
-	
+
 	@GetMapping("/logout")
 	public String logout() {
 		session.invalidate(); // 세션 무효화 (jsessionId에 있는 값을 비우는 것)
-		return "redirect:/"; 
+		return "redirect:/";
 	}
-	
+
 	// 영재 - 로그인 @PostMapping("/login")
 	@PostMapping("/login")
 	public @ResponseBody String login(@Valid LoginReqDto dto, BindingResult bindingResult) {
@@ -162,10 +132,7 @@ public class UserController {
 			return Script.back(errorMap.toString());
 		}
 
-
-		
-		User userEntity =  userServiceImpl.userLogin(dto);
-	
+		User userEntity = userServiceImpl.userLogin(dto);
 
 		if (userEntity == null) { // username, password 잘못 기입
 			return Script.back("아이디 혹은 비밀번호를 잘못 입력하였습니다.");
@@ -176,8 +143,7 @@ public class UserController {
 		}
 	}
 
-	
-	// 영재 - 회원가입  @PostMapping("/join")
+	// 영재 - 회원가입 @PostMapping("/join")
 	@PostMapping("/join")
 	public @ResponseBody String join(@Valid JoinReqDto dto, BindingResult bindingResult) { // username=love&password=1234&email=love@nate.com
 
@@ -191,7 +157,7 @@ public class UserController {
 		}
 
 		userServiceImpl.userJoin(dto);
-		
+
 		return Script.href("/loginForm"); // 리다이렉션 (300)
 	}
 
@@ -200,7 +166,7 @@ public class UserController {
 	public String loginForm() {
 		return "user/loginForm";
 	}
-	
+
 	// 영재 - 회원가입페이지 이동 @GetMapping("/joinForm") return "user/joinForm";
 	@GetMapping("/joinForm")
 	public String joinForm() {
