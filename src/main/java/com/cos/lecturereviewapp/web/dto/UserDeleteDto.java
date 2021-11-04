@@ -9,11 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserUpdateDto {
+public class UserDeleteDto {
 	@NotBlank
-	private String phone;
-	private String email;
 	private String password;
 
+	private String username;
 	
 }
