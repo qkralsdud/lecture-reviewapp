@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,10 +18,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cos.lecturereviewapp.domain.Board.BoardRepository;
 import com.cos.lecturereviewapp.domain.user.User;
 import com.cos.lecturereviewapp.handler.ex.MyAsyncNotFoundException;
-import com.cos.lecturereviewapp.service.board.BoardService;
+import com.cos.lecturereviewapp.service.board.BoardServiceImpl;
 import com.cos.lecturereviewapp.service.review.ReviewServiceImpl;
 import com.cos.lecturereviewapp.util.Script;
 import com.cos.lecturereviewapp.web.dto.BoardSaveDto;
@@ -34,8 +34,8 @@ import lombok.RequiredArgsConstructor;
 public class BoardController {
 	private final ReviewServiceImpl reviewServiceimpl;
 	private final HttpSession session;
-	private final BoardRepository boardRepository;
-	private final BoardService boardService;
+	//
+	private final BoardServiceImpl boardService;
 	
 	// 주완 - 강의 삭제 @DeleteMapping("/board/{id}")
 	@DeleteMapping("/board/{id}")
@@ -49,13 +49,15 @@ public class BoardController {
 	
 	// 주완 - 강의 상세보기 @GetMapping("/board/{id}") return "board/detail"
 	@GetMapping("/board/{id}")
-	public String detail() {
+	public String detail(@PathVariable int id, Model model) {
+		model.addAttribute("boardEntity", boardService.boardDetail(id));
 		return "board/detail";
 	}
 	
 	// 주완 - 강의 리스트(메인) 페이지 이동 @GetMapping("/board/list")
 	@GetMapping("/")
-	public String home() {
+	public String home(Model model) {
+		model.addAttribute("boardsEntity", boardService.boardList(model));
 		return "board/list";
 	}
 	// 주완 - 강의 등록 @PostMapping("/board") 
