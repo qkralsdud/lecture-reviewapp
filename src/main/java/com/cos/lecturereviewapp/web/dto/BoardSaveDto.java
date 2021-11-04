@@ -4,14 +4,14 @@ import com.cos.lecturereviewapp.domain.Board.Board;
 import com.cos.lecturereviewapp.domain.user.User;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 public class BoardSaveDto {
 	
 	// 사진
@@ -50,6 +50,7 @@ public class BoardSaveDto {
 		board.setCurriculum3(curriculum3);
 		board.setCurriculum4(curriculum4);
 		board.setCurriculum5(curriculum5);
+		board.setUser(principal);
 		return board;
 	}
 }

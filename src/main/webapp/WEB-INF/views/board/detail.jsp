@@ -109,7 +109,7 @@ table {
 						<h3>${boardEntity.title }</h3>
 					</div>
 					<div class="search_sub_title">
-						<p>${boardEntity.Intro }</p>
+						<p>${boardEntity.intro }</p>
 					</div>
 					<table>
 						<tr>

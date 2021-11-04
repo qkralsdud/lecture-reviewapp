@@ -32,7 +32,7 @@ th {
 <br>
 <div class="container">
 	<div id="content">
-		<form action="board/list" method="post">
+		<form action="/board" method="post">
 			<div class="mTitle">
 				<h4>그린컴퓨터 아카데미 강의등록</h4>
 				<table class="table">
