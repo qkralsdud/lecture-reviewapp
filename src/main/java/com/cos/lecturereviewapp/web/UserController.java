@@ -1,5 +1,6 @@
 package com.cos.lecturereviewapp.web;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,6 +51,7 @@ public class UserController {
 		System.out.println(dto.getUsername());
 		System.out.println(dto.getPassword());
 		
+<<<<<<< HEAD
 		System.out.println(userServiceImpl.userDelete(dto));
 		
 		User userEntity =  userServiceImpl.userDelete(dto);
@@ -71,8 +73,33 @@ public class UserController {
 	
 		return "user/deleteForm";
 	}
+=======
+		int result = userServiceImpl.userDelete(dto);
+		
+	//	 System.out.println("삭제 유무 : "+result);
 	
+	if (result == 0) { // username, password 잘못 기입
+		return Script.back("비밀번호를 잘못 입력하였습니다.");
+	} else {
+		
+		// 세션 날라가는 조건 : 1. session.invalidate(), 2. 브라우저를 닫으면 날라감
+		session.invalidate();
+		return Script.href("/", "회원 탈퇴 완료");
+	}
+	}
 	
+	// 영재 - 회원 탈퇴 페이지 이동 @GetMapping("/deleteForm") return "user/deleteForm";
+	@GetMapping("/deleteForm/{id}")
+	public String deleteForm(@PathVariable int id) {
+>>>>>>> 정영재
+	
+		return "user/deleteForm";
+	}
+	
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 정영재
 	// 영재 - 회원 수정 @PutMapping("/user/{id}")  
 	@PutMapping("/user/{id}")
 	public @ResponseBody CMRespDto<String> userUpdate(@PathVariable int id, @Valid @RequestBody UserUpdateDto dto,
@@ -135,7 +162,10 @@ public class UserController {
 			return Script.back(errorMap.toString());
 		}
 
+
+		
 		User userEntity =  userServiceImpl.userLogin(dto);
+	
 
 		if (userEntity == null) { // username, password 잘못 기입
 			return Script.back("아이디 혹은 비밀번호를 잘못 입력하였습니다.");

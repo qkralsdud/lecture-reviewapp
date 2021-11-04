@@ -42,11 +42,25 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(dto.toEntity());
 	
 		
-	}
+	}	
 
+<<<<<<< HEAD
 	
 	@Override
 	public User userDelete(LoginReqDto dto) {
+=======
+	@Transactional
+	@Override
+	public int userDelete(LoginReqDto dto) {
+		
+
+		/*
+		 * String encPassword = SHA.encrypt(dto.getPassword(), MyAlgorithm.SHA256);
+		 * System.out.println(dto.getUsername()); System.out.println(encPassword);
+		 * return userRepository.uDelete(dto.getUsername(), encPassword);
+		 */
+		
+>>>>>>> 정영재
 		return userRepository.uDelete(dto.getUsername(), SHA.encrypt(dto.getPassword(), MyAlgorithm.SHA256));
 		
 	}
