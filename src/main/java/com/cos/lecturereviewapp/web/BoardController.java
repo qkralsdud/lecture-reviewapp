@@ -108,6 +108,7 @@ public class BoardController {
 	//민영 - 리뷰 등록 @PostMapping("/board/{boardId}/review")
 	@PostMapping("/board/{boardId}/review")
 	public String review(@PathVariable int boardId, ReviewSaveReqDto dto) {
+		
 		User principal = (User) session.getAttribute("principal");
 		
 		reviewServiceimpl.reviewReg(boardId, dto, principal);
@@ -116,7 +117,8 @@ public class BoardController {
 	
 	//민영 - 리뷰 쓰기페이지 이동 @GetMapping
 	@GetMapping("/board/{boardId}/reviewsaveForm")
-	public String reviewsaveForm(@PathVariable int boardId) {
+	public String reviewsaveForm(@PathVariable int boardId, Model model) {
+		model.addAttribute("boardEntity", boardService.boardDetail(boardId));
 		return "board/reviewsaveForm";
 	}
 }

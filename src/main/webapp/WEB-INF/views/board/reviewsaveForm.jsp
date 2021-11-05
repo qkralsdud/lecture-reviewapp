@@ -6,9 +6,13 @@
    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
    crossorigin="anonymous" />
 <style>
-.star {
+.starRev  {
    flex-direction: column;
    text-align: center;
+}
+
+.title_star {
+	 text-align: center;
 }
 
 nav {
@@ -46,11 +50,11 @@ label {
 </style>
 
 <div class="container">
-	<form action="/board/${boardEntity.id }/review" method="post">
+	<form action="/board/${boardEntity.id}/review"  method="post">
 		<br> <br> <br>
 
 		<!-- 별점주기 -->
-		<h3 class="title_star ">리뷰 작성</h3>
+		<h3 class="title_star ">그린 컴퓨터 아카데미 평점 및 리뷰 작성</h3>
 		<hr>
          <div class="starRev">
             <input type="radio" id="1-stars" value="1" /><label for="1-stars" class="starR on">1</label> 

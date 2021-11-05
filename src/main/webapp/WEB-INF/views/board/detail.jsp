@@ -94,6 +94,25 @@ table {
 .star-rating label:hover, .star-rating label:hover ~ label {
 	-webkit-text-fill-color: #fff58c;
 }
+
+label {
+   background:
+      url('http://miuu227.godohosting.com/images/icon/ico_review.png')
+      no-repeat right 0;
+   background-size: auto 100%;
+   width: 60px;
+   height: 60px;
+   display: inline-block;
+   text-indent: -9999px;
+   cursor: pointer;
+}
+
+[type=radio] {
+   position: absolute;
+   opacity: 0;
+   width: 0;
+   height: 0;
+}
 </style>
 <br>
 <br>
@@ -139,7 +158,9 @@ table {
 			<table class="table table-dark">
 				<tr>
 					<div id="last">
-						<td id="step"><h5>STEP <span>0<c:out value="${i }" /></span></h5></td>
+						<td id="step"><h5>
+								STEP <span>0<c:out value="${i }" /></span>
+							</h5></td>
 						<td>"${boardEntity.curriculum}" +"<c:out value="${i }" /></td>
 					</div>
 				</tr>
@@ -159,17 +180,16 @@ table {
 			<tr>
 				<td id="step4"><h4>평균평점 : 4</h4></td>
 				<td>
-					<div class="star-rating space-x-4 mx-auto">
-						<input type="radio" id="5-stars" name="rating" value="5"
-							v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
-						<input type="radio" id="4-stars" name="rating" value="4"
-							v-model="ratings" /> <label for="4-stars" class="star">★</label>
-						<input type="radio" id="3-stars" name="rating" value="3"
-							v-model="ratings" /> <label for="3-stars" class="star">★</label>
-						<input type="radio" id="2-stars" name="rating" value="2"
-							v-model="ratings" /> <label for="2-stars" class="star">★</label>
-						<input type="radio" id="1-star" name="rating" value="1"
-							v-model="ratings" /> <label for="1-star" class="star">★</label>
+					<div class="starRev">
+						<input type="radio" id="1-stars" value="1" /><label for="1-stars"
+							class="starR on">1</label> <input type="radio" id="2-stars"
+							value="2" /><label for="2-stars" class="starR">2</label> <input
+							type="radio" id="3-stars" value="3" /><label for="3-stars"
+							class="starR">3</label> <input type="radio" id="4-stars"
+							value="4" /><label for="4-stars" class="starR">4</label> <input
+							type="radio" id="5-stars" value="5" /><label for="5-stars"
+							class="starR">5</label> <input type="hidden" id="check_radio"
+							name="rating" />
 					</div>
 				</td>
 			</tr>

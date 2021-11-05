@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginReqDto {
-	@Size(min = 7, max = 20)
+	@Size(min = 6, max = 20)
 	@NotBlank
 	private String username;
 	@Size(min = 4, max = 20)
