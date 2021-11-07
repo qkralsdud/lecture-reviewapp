@@ -4,6 +4,12 @@
 <%@ include file="../layout/header.jsp"%>
 
 <style>
+nav {
+	display: grid;
+	grid-template-columns: auto auto;
+	justify-content: flex-end;
+}
+
 #content {
 	width: auto;
 	margin: 0 auto;
@@ -124,7 +130,7 @@ th {
 					</tr>
 				</table>
 				<hr>
-				<button type="submit" class="btn btn-primary">등록하기</button>
+				<nav><button type="submit" class="btn btn-primary">등록하기</button></nav>
 			</div>
 		</form>
 	</div>
