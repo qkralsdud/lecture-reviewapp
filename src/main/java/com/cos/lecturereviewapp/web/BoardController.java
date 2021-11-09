@@ -54,7 +54,7 @@ public class BoardController {
 	// 주완 - 강의 상세보기 @GetMapping("/board/{id}") return "board/detail"
 	@GetMapping("/board/{id}")
 	public String detail(@PathVariable int id, Model model) {
-		model.addAttribute("boardEntity", boardService.boardDetail(id));
+		model.addAttribute("boardEntity", boardService.boardDetail(id));	
 		return "board/detail";
 	}
 	
@@ -104,9 +104,10 @@ public class BoardController {
 	}
 	
 	//민영 - 리뷰 수정페이지 이동 @GetMapping("/board/reviewupdateForm")
-	@GetMapping("/board/{boardId}/reviewupdateForm")
-	public String reviewupdateForm(@PathVariable int boardId, Model model) {
-		model.addAttribute("boardEntity", boardService.boardDetail(boardId));
+	@GetMapping("/board/{id}/reviewupdateForm")
+	public String reviewupdateForm(@PathVariable int id, Model model) {
+		model.addAttribute("reviewEntity", reviewServiceimpl.reviewupdatepage(id));
+		
 		return "board/reviewupdateForm";
 	}
 	
