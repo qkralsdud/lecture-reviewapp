@@ -41,16 +41,16 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public void reviewupdate(int id, ReviewSaveReqDto dto, User principal) {
 		
-		Review reviewEntity = reviewRepository.findById(id)
+		Review boardEntity = reviewRepository.findById(id)
 				.orElseThrow(() -> new MyAsyncNotFoundException("없는 리뷰 번호 입니다."));
 
-		if(principal.getId() != reviewEntity.getUser().getId()) {
+		if(principal.getId() != boardEntity.getUser().getId()) {
 			throw new MyAsyncNotFoundException("해당 권한없음");
 		}
 		
-		reviewEntity.setTitle(dto.getTitle());
-		reviewEntity.setContent(dto.getContent());
-		reviewEntity.setRating(dto.getRating());		
+		boardEntity.setTitle(dto.getTitle());
+		boardEntity.setContent(dto.getContent());
+		//boardEntity.setRating(dto.getRating());		
 	}
 	
 
