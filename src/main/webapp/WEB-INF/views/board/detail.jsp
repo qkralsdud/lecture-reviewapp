@@ -96,22 +96,22 @@ table {
 }
 
 label {
-   background:
-      url('http://miuu227.godohosting.com/images/icon/ico_review.png')
-      no-repeat right 0;
-   background-size: auto 100%;
-   width: 60px;
-   height: 60px;
-   display: inline-block;
-   text-indent: -9999px;
-   cursor: pointer;
+	background:
+		url('http://miuu227.godohosting.com/images/icon/ico_review.png')
+		no-repeat right 0;
+	background-size: auto 100%;
+	width: 60px;
+	height: 60px;
+	display: inline-block;
+	text-indent: -9999px;
+	cursor: pointer;
 }
 
 [type=radio] {
-   position: absolute;
-   opacity: 0;
-   width: 0;
-   height: 0;
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
 }
 </style>
 <br>
@@ -154,7 +154,7 @@ label {
 			CURRICULUM <span>커리큘럼</span>
 		</h3>
 		</br>
-		<c:forEach var="i" begin="1" end="5" items="${boardsEntity }">
+		<c:forEach var="curry" begin="1" end="5" items="${boardsEntity }">
 			<table class="table table-dark">
 				<tr>
 					<div id="last">
@@ -171,70 +171,76 @@ label {
 		<!--  아래부분 시작-->
 		<!-- 라인  -->
 		<h3 id="step5">
-			<img src="/image/logo.png" alt="John Doe"
-				class="mr-3 mt-3 rounded-circle" style="width: 60px;"> 그린 컴퓨터
-			아카데미 평점 및 리뷰
+			<img src="/image/logo.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width: 60px;"> 그린 컴퓨터 아카데미 평점 및 리뷰
 		</h3>
 		</br>
 		<table class="table">
 			<tr>
-				<td id="step4"><h4>평균평점 : 4</h4></td>
+				<td id="step4"><h4>평균평점 : </h4></td>
 				<td>
 					<div class="starRev">
-						<input type="radio" id="1-stars" value="1" /><label for="1-stars"
-							class="starR on">1</label> <input type="radio" id="2-stars"
-							value="2" /><label for="2-stars" class="starR">2</label> <input
-							type="radio" id="3-stars" value="3" /><label for="3-stars"
-							class="starR">3</label> <input type="radio" id="4-stars"
-							value="4" /><label for="4-stars" class="starR">4</label> <input
-							type="radio" id="5-stars" value="5" /><label for="5-stars"
-							class="starR">5</label> <input type="hidden" id="check_radio"
-							name="rating" />
+						<input type="radio" id="1-stars" value="1" /><label for="1-stars" class="starR on">1</label> 
+						<input type="radio" id="2-stars" value="2" /><label for="2-stars" class="starR">2</label> 
+						<input type="radio" id="3-stars" value="3" /><label for="3-stars" class="starR">3</label> 
+						<input type="radio" id="4-stars" value="4" /><label for="4-stars" class="starR">4</label> 
+						<input type="radio" id="5-stars" value="5" /><label for="5-stars" class="starR">5</label> 
+						<input type="hidden" id="check_radio" name="rating" />
 					</div>
 				</td>
 			</tr>
 		</table>
 		<div class="mt-3">
-			<div class="media border p-3">
-				<img src="/image/logo.png" alt="John Doe"
-					class="mr-3 mt-3 rounded-circle" style="width: 60px;">
-				<div class="media-body">
-					<h4>
-						제목 <small><i>작성자</i></small>
-					</h4>
-					<p>응용 SW 개발에 필요한 환경을 구축하고 프로그래밍 언어의 기초문법을 적용하고 , 자바 언어의 특징을
-						이해하고 기본 응용SW를 구현하며 프로그래밍의 기본기를 익히는 단계</p>
-					<nav>
-						<a href=" /board/${boardEntity.id }/reviewupdateForm"
-							class="btn btn-primary">리뷰 수정</a>
-					</nav>
+			<c:forEach var="review" items="${boardEntity.reviews}">
+				<div class="media border p-3">
+					<img src="/image/logo.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width: 60px;">
+					<div class="media-body">
+						<h4>${review.title } <small><i>${review.rating}</i></small></h4>
+						<p>${review.content }</p>
+							<nav>
+								<div class="d-flex justify-content-end">작성자 : ${review.user.username} &nbsp;</div>
+								<c:if test="${sessionScope.principal.id == boardEntity.user.id}">
+									<a href=" /board/${boardEntity.id }/reviewupdateForm" class="btn btn-primary">리뷰 수정</a>
+								</c:if>
+							</nav>
+					</div>
 				</div>
-			</div>
+			</c:forEach>
 		</div>
 		</br>
-		<div class="mt-3">
-			<div class="media border p-3">
-				<img src="/image/logo.png" alt="John Doe"
-					class="mr-3 mt-3 rounded-circle" style="width: 60px;">
-				<div class="media-body">
-					<h4>
-						제목 <small><i>작성자</i></small>
-					</h4>
-					<p>${boardEntity.intro }</p>
-				</div>
-			</div>
-		</div>
 		</br>
-		<nav>
+	</form>
+			<nav>
 			<ul>
-				<button type="submit" class="btn btn-primary" id="button">강의
-					삭제</button>
-				<a href=" /board/${boardEntity.id }/reviewsaveForm"
-					class="btn btn-primary">리뷰 등록</a>
+				<c:choose>
+					<c:when test="${sessionScope.principal.username eq 'master'}">
+						<button class="btn btn-primary" id="button" onclick="deleteById(${boardEntity.id })">강의 삭제</button>
+					</c:when>	
+				</c:choose>
+				<a href=" /board/${boardEntity.id }/reviewsaveForm" class="btn btn-primary">리뷰 등록</a>
 			</ul>
 		</nav>
 		<!--  아래부분 종료-->
-	</form>
+		<script>
+			async function deleteById(id){
+				// 1. 비동기 함수 호출 -> 비동기를 잘처리하는 방법??????
+				let response = await fetch("http://localhost:8080/board/"+id, {
+					method: "delete"
+				}); // 약속 - 어음 (10초)
+				
+				// 2.코드
+				// json() 함수는 json처럼 생긴 문자열을 자바스크립트 오브젝트로 변환해준다.
+				let parseResponse = await response.json();
+				console.log(parseResponse); 
+				
+				if(parseResponse.code == 1){
+					alert("삭제 성공");
+					location.href="/";
+				}else{
+					alert(parseResponse.msg);
+					location.href="/";
+				}
+			}
+		</script>
 </div>
 
 
