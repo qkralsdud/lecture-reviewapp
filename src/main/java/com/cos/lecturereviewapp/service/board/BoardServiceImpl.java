@@ -23,7 +23,6 @@ public class BoardServiceImpl implements BoardService{
 	
 	// 강의삭제
 	@Transactional(rollbackFor = MyAsyncNotFoundException.class)
-	@Override
 	public void  boardDelete (int id, User principal) {
 		Board boardEntity = boardRepository.findById(id)
 				.orElseThrow(()-> new MyAsyncNotFoundException("강의를 찾을 수 없습니다"));

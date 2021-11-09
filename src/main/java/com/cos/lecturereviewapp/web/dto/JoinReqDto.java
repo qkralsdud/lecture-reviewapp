@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class JoinReqDto {
-	@Size(min = 7, max = 20)
+	@Size(min = 6, max = 20)
 	@NotBlank
 	private String username;
 	
