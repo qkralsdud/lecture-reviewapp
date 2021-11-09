@@ -2,7 +2,6 @@ package com.cos.lecturereviewapp.service.board;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -12,6 +11,7 @@ import com.cos.lecturereviewapp.domain.Board.BoardRepository;
 import com.cos.lecturereviewapp.domain.user.User;
 import com.cos.lecturereviewapp.handler.ex.MyAsyncNotFoundException;
 import com.cos.lecturereviewapp.web.dto.BoardSaveDto;
+import com.cos.lecturereviewapp.web.dto.ReviewSaveReqDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,7 +23,8 @@ public class BoardServiceImpl implements BoardService{
 	
 	// 강의삭제
 	@Transactional(rollbackFor = MyAsyncNotFoundException.class)
-	public void  boardDelete (int id, User principal) {
+	@Override
+	public void  boardDelete(int id, User principal) {
 		Board boardEntity = boardRepository.findById(id)
 				.orElseThrow(()-> new MyAsyncNotFoundException("강의를 찾을 수 없습니다"));
 		
@@ -58,4 +59,12 @@ public class BoardServiceImpl implements BoardService{
 		List<Board> boardsEntity = boardRepository.findAll();
 		return boardsEntity;
 	}
+	
+	//
+	@Transactional(rollbackFor = MyAsyncNotFoundException.class)
+	@Override
+	public int avgRating(ReviewSaveReqDto dto) {
+		return boardRepository.ratingmin(dto.getRating());
+	}
+	
 }

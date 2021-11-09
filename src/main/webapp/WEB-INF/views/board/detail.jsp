@@ -150,24 +150,50 @@ label {
 		</br> </br>
 		<!-- 윗부분 종료 -->
 		<!-- 커리큘럼 -->
-		<h3>
-			CURRICULUM <span>커리큘럼</span>
-		</h3>
+		<h3>CURRICULUM <span>커리큘럼</span></h3>
 		</br>
-		<c:forEach var="curry" begin="1" end="5" items="${boardsEntity }">
 			<table class="table table-dark">
 				<tr>
 					<div id="last">
-						<td id="step"><h5>
-								STEP <span>0<c:out value="${i }" /></span>
-							</h5></td>
-						<td>"${boardEntity.curriculum}" +"<c:out value="${i }" /></td>
+						<td id="step"><h5>STEP <span>01</span></h5></td>
+						<td><c:out value="${boardEntity.curriculum1}"/></td>
+					</div>
+				</tr>
+			</table>
+			<table class="table table-dark">
+				<tr>
+					<div id="last">
+						<td id="step"><h5>STEP <span>02</span></h5></td>
+						<td><c:out value="${boardEntity.curriculum2}"/></td>
+					</div>
+				</tr>
+			</table>
+			<table class="table table-dark">
+				<tr>
+					<div id="last">
+						<td id="step"><h5>STEP <span>03</span></h5></td>
+						<td><c:out value="${boardEntity.curriculum3}"/></td>
+					</div>
+				</tr>
+			</table>
+			<table class="table table-dark">
+				<tr>
+					<div id="last">
+						<td id="step"><h5>STEP <span>04</span></h5></td>
+						<td><c:out value="${boardEntity.curriculum4}"/></td>
+					</div>
+				</tr>
+			</table>
+			<table class="table table-dark">
+				<tr>
+					<div id="last">
+						<td id="step"><h5>STEP <span>05</span></h5></td>
+						<td><c:out value="${boardEntity.curriculum5}"/></td>
 					</div>
 				</tr>
 			</table>
 			</br>
 			</br>
-		</c:forEach>
 		<!--  아래부분 시작-->
 		<!-- 라인  -->
 		<h3 id="step5">
@@ -176,16 +202,16 @@ label {
 		</br>
 		<table class="table">
 			<tr>
-				<td id="step4"><h4>평균평점 : </h4></td>
+				<td id="step4"><h4>평균평점 : ${boardEntity.ratingmin }</h4></td>
 				<td>
-					<div class="starRev">
-						<input type="radio" id="1-stars" value="1" /><label for="1-stars" class="starR on">1</label> 
-						<input type="radio" id="2-stars" value="2" /><label for="2-stars" class="starR">2</label> 
-						<input type="radio" id="3-stars" value="3" /><label for="3-stars" class="starR">3</label> 
-						<input type="radio" id="4-stars" value="4" /><label for="4-stars" class="starR">4</label> 
-						<input type="radio" id="5-stars" value="5" /><label for="5-stars" class="starR">5</label> 
-						<input type="hidden" id="check_radio" name="rating" />
-					</div>
+		         <div class="starRev">
+		            <input type="radio"  value="1" /><label for="1-stars" class="starR on">1</label> 
+		            <input type="radio"  value="2" /><label for="2-stars" class="starR">2</label> 
+		            <input type="radio"  value="3" /><label for="3-stars" class="starR">3</label> 
+		            <input type="radio"  value="4" /><label for="4-stars" class="starR">4</label> 
+		            <input type="radio"  value="5" /><label for="5-stars" class="starR">5</label>
+		            <input type="hidden"  id="check_radio" name="rating" />
+		         </div>
 				</td>
 			</tr>
 		</table>
