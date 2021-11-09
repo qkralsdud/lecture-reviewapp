@@ -199,7 +199,7 @@ label {
 							<nav>
 								<div class="d-flex justify-content-end">작성자 : ${review.user.username} &nbsp;</div>
 								<c:if test="${sessionScope.principal.id == boardEntity.user.id}">
-									<a href=" /board/${boardEntity.id }/reviewupdateForm" class="btn btn-primary">리뷰 수정</a>
+									<a href=" /board/${review.id }/reviewupdateForm" class="btn btn-primary">리뷰 수정</a>
 								</c:if>
 							</nav>
 					</div>

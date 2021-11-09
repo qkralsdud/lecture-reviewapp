@@ -42,7 +42,7 @@
 	<!-- 영화카드시작 -->
 	<c:forEach var="board" items="${boardsEntity}">
 		<div class="card ">
-			<img class="card-img-top" src="${board.filename }"
+			<img class="card-img-top" src="/image/${board.filename }"
 				alt="Card image">
 			<div class="card-body text-center">
 				<h4 class="card-title">${board.title }</h4>
