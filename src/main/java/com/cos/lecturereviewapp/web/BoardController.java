@@ -39,11 +39,9 @@ public class BoardController {
 	
 	// 주완 - 강의 삭제 @DeleteMapping("/board/{id}")
 	@DeleteMapping("/board/{id}")
-	public @ResponseBody CMRespDto<String> deleteById(@PathVariable int id) {
+	public @ResponseBody CMRespDto<String> deleteById(@PathVariable int id, Model model) {
 		User principal = (User) session.getAttribute("principal");
-		
 		boardService.boardDelete(id, principal);
-		
 		return new CMRespDto<String>(1, "성공", null);
 	}
 	
