@@ -37,6 +37,8 @@ public class BoardSaveDto {
 	// 커리큘럼 step5
 	private String curriculum5;
 	
+	private int ratingmin;
+	
 	public Board toEntity(User principal) {
 		Board board = new Board();
 		board.setFilename(filename);
@@ -50,6 +52,7 @@ public class BoardSaveDto {
 		board.setCurriculum3(curriculum3);
 		board.setCurriculum4(curriculum4);
 		board.setCurriculum5(curriculum5);
+		board.setRatingmin(ratingmin);
 		board.setUser(principal);
 		return board;
 	}
