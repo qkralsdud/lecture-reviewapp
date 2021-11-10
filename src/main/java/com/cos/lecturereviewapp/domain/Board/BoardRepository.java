@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface BoardRepository extends JpaRepository<Board, Integer>{
 	
-	@Query(value="select round(avg(rating), -1)  from review", nativeQuery = true)
-	int ratingmin(String ratingmin);
+	@Query(value="select round(avg(rating=:rating))  from review", nativeQuery = true)
+	int ratingmin(String rating);
 }

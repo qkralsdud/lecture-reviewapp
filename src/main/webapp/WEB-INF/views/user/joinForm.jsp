@@ -122,7 +122,7 @@ nav {
 			<input type="text"  name="name" class="form-control" required placeholder="이름">
 		</div>
 		<div class="form-group">
-			<input type="text"  name="email" class="form-control" required placeholder="이메일">
+			<input type="email"  name="email" class="form-control" required placeholder="이메일">
 		</div>
 		<div class="form-group">
 			<input type="text"  name="phone" class="form-control" required placeholder="전화번호">
