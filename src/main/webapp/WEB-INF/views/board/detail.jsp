@@ -242,7 +242,9 @@ label {
 						<button class="btn btn-primary" id="button" onclick="deleteById(${boardEntity.id })">강의 삭제</button>
 					</c:when>	
 				</c:choose>
-				<a href=" /board/${boardEntity.id }/reviewsaveForm" class="btn btn-primary">리뷰 등록</a>
+				<c:if test="${sessionScope.principal.id eq boardEntity.user.id}">
+            <a href=" /board/${boardEntity.id }/reviewsaveForm" class="btn btn-primary">리뷰 등록</a>
+            </c:if>
 			</ul>
 		</nav>
 		<!--  아래부분 종료-->
