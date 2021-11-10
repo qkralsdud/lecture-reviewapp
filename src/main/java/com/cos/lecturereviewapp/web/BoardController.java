@@ -107,7 +107,7 @@ public class BoardController {
 	@GetMapping("/board/{id}/reviewupdateForm")
 	public String reviewupdateForm(@PathVariable int id, Model model) {
 		model.addAttribute("reviewEntity", reviewServiceimpl.reviewupdatepage(id));
-		
+		//model.addAttribute("boardEntity", boardService.boardDetail(id));
 		return "board/reviewupdateForm";
 	}
 	

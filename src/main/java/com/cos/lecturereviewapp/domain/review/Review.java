@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.cos.lecturereviewapp.domain.Board.Board;
 import com.cos.lecturereviewapp.domain.user.User;
 
@@ -34,6 +37,7 @@ public class Review {
 
 	@JoinColumn(name = "userId")
 	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private User user;
 
 	@JoinColumn(name = "boardId")

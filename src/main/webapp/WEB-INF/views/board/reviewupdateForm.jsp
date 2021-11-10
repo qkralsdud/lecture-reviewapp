@@ -54,11 +54,11 @@ label {
 		<h3 class="title_star ">리뷰 수정</h3>
 		<hr>
          <div class="starRev">
-            <input type="radio" id="rating" value="1" /><label for="1-stars" class="starR on">1</label> 
-            <input type="radio" id="rating" value="2" /><label for="2-stars" class="starR">2</label> 
-            <input type="radio" id="rating" value="3" /><label for="3-stars" class="starR">3</label> 
-            <input type="radio" id="rating" value="4" /><label for="4-stars" class="starR">4</label> 
-            <input type="radio" id="rating" value="5" /><label for="5-stars" class="starR">5</label>
+            <input type="radio"  value="1" /><label for="1-stars" class="starR on">1</label> 
+            <input type="radio"  value="2" /><label for="2-stars" class="starR">2</label> 
+            <input type="radio" value="3" /><label for="3-stars" class="starR">3</label> 
+            <input type="radio"  value="4" /><label for="4-stars" class="starR">4</label> 
+            <input type="radio"  value="5" /><label for="5-stars" class="starR">5</label>
             <input type="hidden"  id="check_radio" name="rating" />
          </div>
 		<br />
@@ -85,7 +85,7 @@ label {
 	    let reviewUpdateDto = {
 	          title: document.querySelector("#title").value,
 	          content: document.querySelector("#content").value,
-	          rating:  document.querySelector("#rating").value
+	          rating:  document.querySelector("#check_radio").value
 	    };
 	   
 	       let response = await fetch("http://localhost:8080/board/"+id+"/reviewupdate", {
