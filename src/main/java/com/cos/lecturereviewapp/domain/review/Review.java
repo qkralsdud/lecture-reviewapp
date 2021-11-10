@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 
@@ -33,6 +34,7 @@ public class Review {
 
 	private String rating;
 
+	@Lob
 	private String content;
 
 	@JoinColumn(name = "userId")
