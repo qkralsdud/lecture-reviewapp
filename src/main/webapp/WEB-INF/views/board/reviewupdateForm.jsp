@@ -7,6 +7,15 @@
    crossorigin="anonymous" />
 
 <style>
+.starRev  {
+   flex-direction: column;
+   text-align: center;
+}
+
+.title_star {
+	 text-align: center;
+}
+
 .star {
    flex-direction: column;
    text-align: center;
@@ -51,7 +60,7 @@ label {
 	<form onsubmit="update(event, ${reviewEntity.id})">
 		<br> <br> <br>
 		<!-- 별점주기 -->
-		<h3 class="title_star ">리뷰 수정</h3>
+		<h3 class="title_star ">그린 컴퓨터 아카데미 평점 및 리뷰 수정</h3>
 		<hr>
          <div class="starRev">
             <input type="radio"  value="1" /><label for="1-stars" class="starR">1</label> 

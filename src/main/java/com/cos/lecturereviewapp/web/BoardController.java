@@ -43,7 +43,7 @@ public class BoardController {
 	
 	// 주완 - 강의 삭제 @DeleteMapping("/board/{id}")
 	@DeleteMapping("/board/{id}")
-	public @ResponseBody CMRespDto<String> deleteById(@PathVariable int id, Model model) {
+	public @ResponseBody CMRespDto<String> deleteById(@PathVariable int id) {
 		User principal = (User) session.getAttribute("principal");
 		
 		boardService.boardDelete(id, principal);
@@ -113,15 +113,17 @@ public class BoardController {
 	
 	//민영 - 리뷰 등록 @PostMapping("/board/{boardId}/review")
 	@PostMapping("/board/{boardId}/review")
-	public String review(@PathVariable int boardId, ReviewSaveReqDto dto) {
+	public String review(@PathVariable int boardId, ReviewSaveReqDto dto, Model model) {
 		
 		User principal = (User) session.getAttribute("principal");
 		
 		dto.setContent(dto.getContent().replace("<p>", ""));
 		dto.setContent(dto.getContent().replace("</p>", ""));
 		dto.setContent(dto.getContent().replace("<br>", ""));
-		
+				
 		reviewServiceimpl.reviewReg(boardId, dto, principal);
+		
+		model.addAttribute("boardEntity", boardService.avgRating(boardId, dto));	
 		return "redirect:/board/"+boardId;
 	}
 	

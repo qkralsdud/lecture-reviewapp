@@ -14,7 +14,7 @@ public interface BoardService {
 	
 	void boardSave(BoardSaveDto dto, User principal);
 
-	int avgRating(ReviewSaveReqDto dto);
+	int avgRating(int id, ReviewSaveReqDto dto);
 
 
 }

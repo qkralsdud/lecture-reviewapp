@@ -49,12 +49,12 @@ table {
 
 .header {
 	background-image: url("/image/background.jpg");
-	height: 350px;
+	height: 400px;
 }
 
 .search_box {
 	width: 480px;
-	height: 320px;
+	height: 380px;
 	background-color: rgba(255, 255, 255, .95);
 	display: inline-block;
 	padding: 20px 30px;
@@ -65,59 +65,46 @@ table {
 	right: 10px;
 }
 
-.star-rating {
-	display: flex;
-	flex-direction: row-reverse;
-	font-size: 2.25rem;
-	line-height: 2.5rem;
-	padding: 0 0.2em;
-	text-align: center;
-	width: 5em;
-}
-
-.star-rating input {
-	display: none;
-}
-
-.star-rating label {
-	-webkit-text-fill-color: transparent;
-	/* Will override color (regardless of order) */
-	-webkit-text-stroke-width: 2.3px;
-	-webkit-text-stroke-color: #2b2a29;
-	cursor: pointer;
-}
-
-.star-rating :checked ~ label {
-	-webkit-text-fill-color: gold;
-}
-
-.star-rating label:hover, .star-rating label:hover ~ label {
-	-webkit-text-fill-color: #fff58c;
-}
-
 label {
-	background:
-		url('http://miuu227.godohosting.com/images/icon/ico_review.png')
-		no-repeat right 0;
-	background-size: auto 100%;
-	width: 60px;
-	height: 60px;
-	display: inline-block;
-	text-indent: -9999px;
-	cursor: pointer;
+   background:
+      url('http://miuu227.godohosting.com/images/icon/ico_review.png')
+      no-repeat right 0;
+   background-size: auto 100%;
+   width: 60px;
+   height: 60px;
+   display: inline-block;
+   text-indent: -9999px;
+   cursor: pointer;
+}
+
+.starR input {
+   display: none;
+}
+
+.starR.on {
+   background-position: 0 0;
 }
 
 [type=radio] {
-	position: absolute;
-	opacity: 0;
-	width: 0;
-	height: 0;
+   position: absolute;
+   opacity: 0;
+   width: 0;
+   height: 0;
 }
+
+
+
+
+
+
+
+
 
 textarea {
 	width: 95%;
 	height: 100px;
 }
+
 </style>
 <br>
 <br>
@@ -202,12 +189,11 @@ textarea {
 		<!--  아래부분 시작-->
 		<!-- 라인  -->
 		<h3 id="step5">
-			<img src="/image/logo.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width: 60px;"> 그린 컴퓨터 아카데미 평점 및 리뷰
-		</h3>
+			<img src="/image/logo.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width: 60px;"> 그린 컴퓨터 아카데미 평점 및 리뷰</h3>
 		</br>
 		<table class="table">
 			<tr>
-				<td id="step4"><h4>평균평점 : ${boardEntity.ratingmin }</h4></td>
+				<td id="step4"><h4>평균평점 : 5</h4></td>
 				<td>
 		         <div class="starRev">
 		            <input type="radio"  value="1" /><label for="1-stars" class="starR">1</label> 
@@ -231,11 +217,7 @@ textarea {
 						<br>
 							<nav>
 								<div class="d-flex justify-content-end">작성자 : ${review.user.username} &nbsp;</div>
-<<<<<<< HEAD
-								<c:if test="${sessionScope.principal.id == review.user.id}">
-=======
 								<c:if test="${sessionScope.principal.id eq boardEntity.user.id}">
->>>>>>> 3574b56854ac3eb6a16c3a25e3fca06c5e2b6992
 									<a href=" /board/${review.id }/reviewupdateForm" class="btn btn-primary">리뷰 수정</a>
 								</c:if>
 							</nav>
@@ -251,37 +233,40 @@ textarea {
 			<ul>
 				<c:choose>
 					<c:when test="${sessionScope.principal.username eq 'master'}">
-						<button class="btn btn-primary" id="button" onclick="deleteById(${boardEntity.id })">강의 삭제</button>
+						<button class="btn btn-primary"  onclick="deleteById(${boardEntity.id })">강의 삭제</button>
 					</c:when>	
 				</c:choose>
-				<c:if test="${sessionScope.principal.id eq boardEntity.user.id}">
-	            	<a href=" /board/${boardEntity.id }/reviewsaveForm" class="btn btn-primary">리뷰 등록</a>
-	            </c:if>
+				    <a href=" /board/${boardEntity.id }/reviewsaveForm" class="btn btn-primary">리뷰 등록</a>
 			</ul>
 		</nav>
 		<!--  아래부분 종료-->
 		<script>
-			async function deleteById(id){
-				// 1. 비동기 함수 호출 -> 비동기를 잘처리하는 방법??????
-				let response = await fetch("http://localhost:8080/board/"+id, {
-					method: "delete"
-				}); // 약속 - 어음 (10초)
-				
-				// 2.코드
-				// json() 함수는 json처럼 생긴 문자열을 자바스크립트 오브젝트로 변환해준다.
-				let parseResponse = await response.json();
-				console.log(parseResponse); 
-				
-				if(parseResponse.code == 1){
-					alert("삭제 성공");
-					location.href="/";
-				}else{
-					alert(parseResponse.msg);
-					location.href="/";
-				}
-			}
+		async function deleteById(id){
+			// 1. 비동기 함수 호출 -> 비동기를 잘처리하는 방법??????
+			let response = await fetch("http://localhost:8080/board/"+id, {
+				method: "delete"
+			}); // 약속 - 어음 (10초)
 			
-
+			// 2.코드
+			// json() 함수는 json처럼 생긴 문자열을 자바스크립트 오브젝트로 변환해준다.
+			let parseResponse = await response.json();
+			console.log(parseResponse); 
+			
+			if(parseResponse.code == 1){
+				alert("삭제 성공");
+				location.href="/";
+			}else{
+				alert(parseResponse.msg);
+				location.href="/";
+			}
+		}
+		
+		   $('.starRev label').click(function(e) {
+			      $(this).parent().children('label').removeClass('on');
+			      $(this).addClass('on').prevAll('label').addClass('on');
+			      $("#check_radio").val($(this).text());
+			      return false;
+			   });
 		</script>
 </div>
 
