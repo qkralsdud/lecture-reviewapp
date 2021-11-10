@@ -117,6 +117,10 @@ public class BoardController {
 		
 		User principal = (User) session.getAttribute("principal");
 		
+		dto.setContent(dto.getContent().replace("<p>", ""));
+		dto.setContent(dto.getContent().replace("</p>", ""));
+		dto.setContent(dto.getContent().replace("<br>", ""));
+		
 		reviewServiceimpl.reviewReg(boardId, dto, principal);
 		return "redirect:/board/"+boardId;
 	}

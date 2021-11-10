@@ -113,6 +113,11 @@ label {
 	width: 0;
 	height: 0;
 }
+
+textarea {
+	width: 95%;
+	height: 100px;
+}
 </style>
 <br>
 <br>
@@ -205,7 +210,7 @@ label {
 				<td id="step4"><h4>평균평점 : ${boardEntity.ratingmin }</h4></td>
 				<td>
 		         <div class="starRev">
-		            <input type="radio"  value="1" /><label for="1-stars" class="starR on">1</label> 
+		            <input type="radio"  value="1" /><label for="1-stars" class="starR">1</label> 
 		            <input type="radio"  value="2" /><label for="2-stars" class="starR">2</label> 
 		            <input type="radio"  value="3" /><label for="3-stars" class="starR">3</label> 
 		            <input type="radio"  value="4" /><label for="4-stars" class="starR">4</label> 
@@ -220,16 +225,19 @@ label {
 				<div class="media border p-3">
 					<img src="/image/logo.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width: 60px;">
 					<div class="media-body">
-						<h4>${review.title } <small><i>${review.rating}</i></small></h4>
-						<p>${review.content }</p>
+						<h4>${review.title } <small><i><img src="/image/star.jpg" width="45px" /> ${review.rating}</i></small></h4>
+						<textarea style="border: none">${review.content }</textarea>
+						<br>
+						<br>
 							<nav>
 								<div class="d-flex justify-content-end">작성자 : ${review.user.username} &nbsp;</div>
-								<c:if test="${sessionScope.principal.id == boardEntity.user.id}">
+								<c:if test="${sessionScope.principal.id == review.user.id}">
 									<a href=" /board/${review.id }/reviewupdateForm" class="btn btn-primary">리뷰 수정</a>
 								</c:if>
 							</nav>
 					</div>
 				</div>
+				<br>
 			</c:forEach>
 		</div>
 		</br>
@@ -242,7 +250,9 @@ label {
 						<button class="btn btn-primary" id="button" onclick="deleteById(${boardEntity.id })">강의 삭제</button>
 					</c:when>	
 				</c:choose>
-				<a href=" /board/${boardEntity.id }/reviewsaveForm" class="btn btn-primary">리뷰 등록</a>
+				<c:if test="${sessionScope.principal.id eq boardEntity.user.id}">
+	            	<a href=" /board/${boardEntity.id }/reviewsaveForm" class="btn btn-primary">리뷰 등록</a>
+	            </c:if>
 			</ul>
 		</nav>
 		<!--  아래부분 종료-->
@@ -266,6 +276,8 @@ label {
 					location.href="/";
 				}
 			}
+			
+
 		</script>
 </div>
 
