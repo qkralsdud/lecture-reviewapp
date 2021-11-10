@@ -231,7 +231,11 @@ textarea {
 						<br>
 							<nav>
 								<div class="d-flex justify-content-end">작성자 : ${review.user.username} &nbsp;</div>
+<<<<<<< HEAD
 								<c:if test="${sessionScope.principal.id == review.user.id}">
+=======
+								<c:if test="${sessionScope.principal.id eq boardEntity.user.id}">
+>>>>>>> 3574b56854ac3eb6a16c3a25e3fca06c5e2b6992
 									<a href=" /board/${review.id }/reviewupdateForm" class="btn btn-primary">리뷰 수정</a>
 								</c:if>
 							</nav>

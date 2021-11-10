@@ -37,16 +37,16 @@ public class Board {
 	@Column(nullable = false, length = 50)
 	private String filename;
 	
-	@Column(nullable = false, length = 50)
+	@Column(nullable = false, length = 255)
 	private String title;
 
 	@Column(nullable = false, length = 50)
 	private String teacher;
 
-	@Column(nullable = false, length = 50)
+	@Column(nullable = false, length = 255)
 	private String employment;
 
-	@Column(nullable = false, length = 50)
+	@Column(nullable = false, length = 255)
 	private String program;
 
 	@Lob

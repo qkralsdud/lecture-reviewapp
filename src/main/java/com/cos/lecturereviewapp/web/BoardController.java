@@ -128,7 +128,7 @@ public class BoardController {
 	//민영 - 리뷰 쓰기페이지 이동 @GetMapping
 	@GetMapping("/board/{boardId}/reviewsaveForm")
 	public String reviewsaveForm(@PathVariable int boardId, Model model) {
-		model.addAttribute("boardEntity", boardService.boardDetail(boardId));
+		model.addAttribute("boardEntity", boardService.boardDetail(boardId));	
 		return "board/reviewsaveForm";
 	}
 }
